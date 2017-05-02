@@ -25,11 +25,13 @@
   "homepage": "https://github.com/kouMatsumoto/my-tokyu-bus#readme",
   "dependencies": {
     "jsdom": "^10.1.0",
-    "koa": "^2.2.0"
+    "koa": "^2.2.0",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "@types/jsdom": "^2.0.30",
     "@types/koa": "^2.0.39",
+    "@types/winston": "^2.3.1",
     "tslint": "^5.1.0",
     "typescript": "^2.3.2"
   }
