@@ -1,0 +1,8 @@
+---
+- hosts: vagrant
+  remote_user: '{{ user_name }}'
+  roles:
+    - timezone
+    - locale
+    - essential-packages
+    - node.js
