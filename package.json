@@ -1,6 +1,6 @@
 {
   "name": "my-tokyu-bus",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "API server for Actions on Google",
   "main": "index.js",
   "engines": {
@@ -19,7 +19,8 @@
     "url": "git+https://github.com/kouMatsumoto/my-tokyu-bus.git"
   },
   "author": "Kou Matsumoto",
-  "license": "ISC",
+  "license": "UNLICENSED",
+  "private": true,
   "bugs": {
     "url": "https://github.com/kouMatsumoto/my-tokyu-bus/issues"
   },
