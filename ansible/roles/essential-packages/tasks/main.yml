@@ -1,0 +1,14 @@
+---
+# tasks to install essential apt packages
+#
+# - git: sourcecode version control
+#
+- name: Install essential packages
+  sudo: yes
+  yum:
+    name: '{{ item }}'
+    state: latest
+    update_cache: yes
+  with_items:
+    - epel-release
+    - git

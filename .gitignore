@@ -46,3 +46,7 @@ server/**/*.js.map
 # ignore log files
 log/**/*
 !log/**/.gitkeep
+
+# ignore ansible's unnecessary files
+ansible/*.retry
+ansible/test.yml
