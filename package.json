@@ -1,0 +1,35 @@
+{
+  "name": "my-tokyu-bus",
+  "version": "0.0.1",
+  "description": "API server for Actions on Google",
+  "main": "index.js",
+  "engines": {
+    "node": ">=7.6.0",
+    "npm": ">=4.2.0"
+  },
+  "scripts": {
+    "develop": "tsc -p ./server/tsconfig.json -w",
+    "lint": "tslint -p ./server/tslint.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kouMatsumoto/my-tokyu-bus.git"
+  },
+  "author": "Kou Matsumoto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kouMatsumoto/my-tokyu-bus/issues"
+  },
+  "homepage": "https://github.com/kouMatsumoto/my-tokyu-bus#readme",
+  "dependencies": {
+    "jsdom": "^10.1.0",
+    "koa": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^2.0.30",
+    "@types/koa": "^2.0.39",
+    "tslint": "^5.1.0",
+    "typescript": "^2.3.2"
+  }
+}
