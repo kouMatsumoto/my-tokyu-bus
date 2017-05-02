@@ -1,21 +1,8 @@
-/* tslint:disable */
+import { TokyuBusInformation } from '../types/index';
 
+// @types/jsdom is incorrectly
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-
-
-/**
- * type of parseHtmlOfTokyuBus return value
- *
- * - coming: is bus coming now ?
- * - gone: had bus gone already ?
- * - waitingTime: minutes to arrives, this is set when `coming` is true
- */
-interface TokyuBusInformation {
-  coming: boolean;
-  gone: boolean;
-  waitingTime: number;
-}
 
 
 /**
