@@ -9,3 +9,26 @@
         accept_hostkey: yes
         version: master
         force: yes
+
+    - name: Execute npm install
+      command: 'bash -lc "npm install --production"'
+      args:
+        chdir: '{{ app_path }}'
+
+    - name: Check pm2 is running
+      command: 'bash -lc "pm2 list | grep main | cat"'
+      args:
+        chdir: '{{ app_path }}'
+      register: result_pm2
+
+    - name: Start pm2 when not running
+      command: 'bash -lc "pm2 start pm2.json --env production"'
+      args:
+        chdir: '{{ app_path }}'
+      when: result_pm2.stdout == ''
+
+    - name: Update pm2 when running
+      command: 'bash -lc "pm2 restart pm2.json --env production"'
+      args:
+        chdir: '{{ app_path }}'
+      when: result_pm2.stdout != ''
