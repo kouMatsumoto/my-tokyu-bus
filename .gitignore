@@ -42,3 +42,7 @@ jspm_packages
 # ignore transpile result
 server/**/*.js
 server/**/*.js.map
+
+# ignore log files
+log/**/*
+!log/**/.gitkeep
