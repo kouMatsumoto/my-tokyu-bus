@@ -5,4 +5,5 @@
     - timezone
     - locale
     - essential-packages
+    - nginx
     - node.js
