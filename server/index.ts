@@ -1,7 +1,6 @@
 import * as Koa from 'koa';
-import { getHtmlOfTokyuBus } from './lib/get-html-of-tokyu-bus';
-import { parseHtmlOfTokyuBus } from './lib/parse-html-of-tokyu-bus';
 import { logger } from './lib/logger';
+import { rootRouter } from './routers';
 
 
 const app = new Koa();
@@ -18,11 +17,6 @@ app.use(async (ctx, next) => {
 });
 
 
-app.use(async (ctx) => {
-  const result = await getHtmlOfTokyuBus();
-  const parsed = parseHtmlOfTokyuBus(result.contents);
-
-  ctx.body = parsed;
-});
+app.use(rootRouter.routes());
 
 app.listen(3000);
