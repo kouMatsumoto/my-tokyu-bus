@@ -10,4 +10,5 @@
     state: latest
     update_cache: yes
   with_items:
+    - epel-release
     - git
