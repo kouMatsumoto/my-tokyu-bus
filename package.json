@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/kouMatsumoto/my-tokyu-bus/issues"
   },
-  "homepage": "https://github.com/kouMatsumoto/my-tokyu-bus#readme"
+  "homepage": "https://github.com/kouMatsumoto/my-tokyu-bus#readme",
+  "dependencies": {
+    "jsdom": "^10.1.0",
+    "koa": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^2.0.30",
+    "@types/koa": "^2.0.39",
+    "typescript": "^2.3.2"
+  }
 }
