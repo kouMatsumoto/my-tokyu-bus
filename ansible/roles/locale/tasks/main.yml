@@ -1,0 +1,28 @@
+---
+# tasks about locale_gen and locale for Japanese
+
+- name: Add locales
+  sudo: yes
+  command: 'localedef -c -i {{ item }} -f UTF-8 {{ item }}.UTF-8'
+  with_items:
+    - en_US
+    - ja_JP
+
+- name: Update locale settings
+  sudo: yes
+  command: 'localectl set-locale {{ item }}'
+  with_items:
+    - LANG=en_US.UTF-8
+    - LANGUAGE=en_US.UTF-8
+    - LC_CTYPE="en_US.UTF-8"
+    - LC_NUMERIC=ja_JP.UTF-8
+    - LC_TIME=ja_JP.UTF-8
+    - LC_COLLATE="en_US.UTF-8"
+    - LC_MONETARY=ja_JP.UTF-8
+    - LC_MESSAGES="en_US.UTF-8"
+    - LC_PAPER=ja_JP.UTF-8
+    - LC_NAME=ja_JP.UTF-8
+    - LC_ADDRESS=ja_JP.UTF-8
+    - LC_TELEPHONE=ja_JP.UTF-8
+    - LC_MEASUREMENT=ja_JP.UTF-8
+    - LC_IDENTIFICATION=ja_JP.UTF-8
