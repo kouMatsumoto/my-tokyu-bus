@@ -6,3 +6,5 @@
 localhost ansible_port=2222 ansible_user=vagrant
 [vagrant:vars]
 user_name=vagrant
+git_repository=https://github.com/kouMatsumoto/my-tokyu-bus.git
+app_path=/home/vagrant/web_server
