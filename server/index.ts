@@ -1,6 +1,7 @@
 import * as Koa from 'koa';
 import { getHtmlOfTokyuBus } from './lib/get-html-of-tokyu-bus';
 import { parseHtmlOfTokyuBus } from './lib/parse-html-of-tokyu-bus';
+import { logger } from './lib/logger';
 
 
 const app = new Koa();
@@ -13,7 +14,7 @@ app.use(async (ctx, next) => {
   await next();
 
   const ms: number = Date.now() - start;
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  logger.debug(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
 
