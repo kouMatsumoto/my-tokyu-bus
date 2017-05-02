@@ -2,9 +2,13 @@ import * as Router from 'koa-router';
 import { getHtmlOfTokyuBus } from '../../lib/get-html-of-tokyu-bus';
 import { parseHtmlOfTokyuBus } from '../../lib/parse-html-of-tokyu-bus';
 import { logger } from '../../lib/logger';
+import { getMessageFromInformation } from '../../lib/get-message-from-information';
 
 
 const apiRouter = new Router();
+
+const busInfoArray = Symbol('busInfoArray');
+
 
 /**
  * middleware to fetch and set tokyu-bus information
@@ -12,7 +16,7 @@ const apiRouter = new Router();
 apiRouter.use(async (ctx, next) => {
   const result = await getHtmlOfTokyuBus();
   const infoArray =  parseHtmlOfTokyuBus(result.contents);
-  ctx.state['busInfoArray'] = infoArray;
+  ctx.state[busInfoArray] = infoArray;
   logger.debug('fetched bus info', {infoArray: infoArray});
 
   await next();
@@ -23,7 +27,7 @@ apiRouter.use(async (ctx, next) => {
  * return all information array json.
  */
 apiRouter.get('/', async (ctx) => {
-  ctx.body = ctx.state['busInfoArray'];
+  ctx.body = ctx.state[busInfoArray];
 });
 
 
@@ -31,7 +35,17 @@ apiRouter.get('/', async (ctx) => {
  * return first information json.
  */
 apiRouter.get('/next', async (ctx) => {
-  ctx.body = ctx.state['busInfoArray'];
+  let message = '';
+  const nextInformation = ctx.state[busInfoArray][0];
+
+  // there is no coming bus
+  if (!nextInformation) {
+    message = 'There is no coming bus';
+  } else {
+    message = getMessageFromInformation(nextInformation);
+  }
+
+  ctx.body = message;
 });
 
 
