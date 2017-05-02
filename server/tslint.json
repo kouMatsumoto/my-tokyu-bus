@@ -11,7 +11,7 @@
       true,
       "spaces"
     ],
-    "max-line-length": [true, 140],
+    "max-line-length": [false],
     "no-inferrable-types": true,
     "no-duplicate-variable": true,
     "no-eval": true,

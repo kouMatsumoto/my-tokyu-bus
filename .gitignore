@@ -38,3 +38,7 @@ jspm_packages
 
 # IDE
 .idea
+
+# ignore transpile result
+server/**/*.js
+server/**/*.js.map
