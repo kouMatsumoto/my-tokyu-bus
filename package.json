@@ -8,6 +8,8 @@
     "npm": ">=4.2.0"
   },
   "scripts": {
+    "develop": "tsc -p ./server/tsconfig.json -w",
+    "lint": "tslint -p ./server/tslint.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +29,7 @@
   "devDependencies": {
     "@types/jsdom": "^2.0.30",
     "@types/koa": "^2.0.39",
+    "tslint": "^5.1.0",
     "typescript": "^2.3.2"
   }
 }
