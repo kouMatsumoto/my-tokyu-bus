@@ -10,6 +10,7 @@
   "scripts": {
     "develop": "tsc -p ./server/tsconfig.json -w",
     "lint": "tslint -p ./server/tslint.json",
+    "server": "node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
