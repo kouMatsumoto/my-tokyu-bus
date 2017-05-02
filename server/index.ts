@@ -5,6 +5,18 @@ import { parseHtmlOfTokyuBus } from './lib/parse-html-of-tokyu-bus';
 
 const app = new Koa();
 
+/**
+ * logging path and time for development
+ */
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+
+  const ms: number = Date.now() - start;
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+});
+
+
 app.use(async (ctx) => {
   const result = await getHtmlOfTokyuBus();
   const parsed = parseHtmlOfTokyuBus(result.contents);
