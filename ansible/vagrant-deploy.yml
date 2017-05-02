@@ -9,3 +9,8 @@
         accept_hostkey: yes
         version: master
         force: yes
+
+    - name: Execute npm install
+      command: 'bash -lc "npm install --production"'
+      args:
+        chdir: '{{ app_path }}'
