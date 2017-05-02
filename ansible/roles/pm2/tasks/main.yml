@@ -1,0 +1,4 @@
+---
+- name: Install pm2
+  sudo: no
+  command: 'bash -lc "npm install pm2 -g"'
