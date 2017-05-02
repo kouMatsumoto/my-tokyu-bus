@@ -7,3 +7,4 @@
     - essential-packages
     - nginx
     - node.js
+    - pm2
