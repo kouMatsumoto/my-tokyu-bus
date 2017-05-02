@@ -1,0 +1,7 @@
+---
+# tasks to set timezone 'Asia/Tokyo'
+
+- name: set timezone Asia/Tokyo
+  sudo: yes
+  timezone:
+    name: Asia/Tokyo

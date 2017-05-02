@@ -35,3 +35,18 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# IDE
+.idea
+
+# ignore transpile result
+server/**/*.js
+server/**/*.js.map
+
+# ignore log files
+log/**/*
+!log/**/.gitkeep
+
+# ignore ansible's unnecessary files
+ansible/*.retry
+ansible/test.yml

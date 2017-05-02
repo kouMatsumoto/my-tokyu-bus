@@ -1,0 +1,5 @@
+---
+# Following packages are needed to install nvm.
+#   - git
+dependencies:
+  - { role: essential-packages }

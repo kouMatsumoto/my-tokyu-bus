@@ -1,0 +1,19 @@
+---
+- name: Check .profile exists
+  sudo: no
+  stat:
+    path: '~/.profile'
+  register: result
+
+# @todo: Error occurs
+# VARIABLE IS NOT DEFINED!
+- debug:
+    var: result
+
+- name: Create .profile when not exists
+  sudo: no
+  file:
+    path: '~/.profile'
+    state: touch
+    mode: 0644
+  when: not result.stat.exists
