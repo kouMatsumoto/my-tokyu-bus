@@ -1,0 +1,12 @@
+---
+- hosts: production
+  remote_user: '{{ user_name }}'
+  vars_files:
+    - ./vars/production.yml
+  roles:
+    - timezone
+    - locale
+    - essential-packages
+    - nginx
+    - node.js
+    - pm2

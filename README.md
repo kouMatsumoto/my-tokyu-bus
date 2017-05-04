@@ -2,25 +2,45 @@
 API server for Actions on Google
 
 
-# Deploy
+# Server
 
-1. Configure ansible var files
+This project uses `Ansible` to setup server and deploy application.
 
-copy `./vars/sample.yml` to following files.
-and update variables of contents with your private information.
+
+### Setup server
+
+1. Enable `ansible`
+
+First of all, install `andible` to your server.
+See official installation [http://docs.ansible.com/ansible/intro_installation.html](http://docs.ansible.com/ansible/intro_installation.html).
+
+2. Create variable file of ansible
+
+Because the variable file has private information, so it should not be managed by VCS.
+To use ansible, you need to create your original variable file.
+Create `./vars/production.yml` based on `./vars/sample.yml`.
 
 ```bash
-cp ./vars/sample.yml ./vars/vagrant.yml
+cp ./vars/sample.yml ./vars/production.yml
 ```
 
-2. Add your ssh-agent ssh-key to allow to access git-repository from remote-server.
+3. Execute `ansible-playbook` to setup middlewares
+
+```bash
+$ ansible-playbook production-setup.yml
+```
+
+
+### Deploy application
+
+1. Add your ssh-agent ssh-key to access git-repository.
 
 ```bash
 $ ssh-add 'your-key'
 ```
 
-3. Execute ansible-playbook
+2. Execute ansible-playbook
 
 ```bash
-$ ansible-playbook vagrant.yml
+$ ansible-playbook production.yml
 ```
