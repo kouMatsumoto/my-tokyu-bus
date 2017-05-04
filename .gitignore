@@ -50,3 +50,7 @@ log/**/*
 # ignore ansible's unnecessary files
 ansible/*.retry
 ansible/test.yml
+
+# Ansible's variable files
+ansible/vars/**/*
+!ansible/vars/sample.yml
