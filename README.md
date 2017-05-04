@@ -11,6 +11,7 @@ and update variables of contents with your private information.
 
 ```bash
 cp ./vars/sample.yml ./vars/vagrant.yml
+cp ./vars/sample.yml ./vars/production.yml
 ```
 
 2. Add your ssh-agent ssh-key to allow to access git-repository from remote-server.
@@ -23,4 +24,5 @@ $ ssh-add 'your-key'
 
 ```bash
 $ ansible-playbook vagrant.yml
+$ ansible-playbook production.yml
 ```
