@@ -1,6 +1,8 @@
 ---
 - hosts: vagrant
   remote_user: '{{ user_name }}'
+  vars_files:
+    - ./vars/vagrant.yml
   tasks:
     - name: Git pull master repository
       git:
