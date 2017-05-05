@@ -54,3 +54,6 @@ ansible/test.yml
 # Ansible's variable files
 ansible/vars/**/*
 !ansible/vars/sample.yml
+
+# Ansible's private template files
+ansible/roles/nginx/templates/nginx.conf.j2
