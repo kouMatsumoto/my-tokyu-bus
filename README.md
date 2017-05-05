@@ -24,7 +24,17 @@ Create `./vars/production.yml` based on `./vars/sample.yml`.
 cp ./vars/sample.yml ./vars/production.yml
 ```
 
-3. Execute `ansible-playbook` to setup middlewares
+3. Create nginx.conf.j2
+
+Same as previous, nginx.conf file contain private information.
+So this file is ignored for VCS.
+Create your own nginx.conf file based on `./roles/nginx/templates/sample.conf.j2` 
+
+```bash
+cp ./roles/nginx/templates/sample.conf.j2 ./roles/nginx/templates/nginx.conf.j2
+```
+
+4. Execute `ansible-playbook` to setup middlewares
 
 ```bash
 $ ansible-playbook production-setup.yml
