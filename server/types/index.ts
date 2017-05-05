@@ -15,3 +15,16 @@ export interface TokyuBusInformation {
   gone: boolean;
   waitingTime: number;
 }
+
+
+/**
+ * see https://docs.api.ai/docs/webhook
+ */
+export interface ApiAiWebhookResult {
+  speech: string;
+  displayText: string;
+  data?: any;
+  contextOut?: any;
+  source: string;
+  followupEvent?: any;
+}
