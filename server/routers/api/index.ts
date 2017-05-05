@@ -3,6 +3,7 @@ import { getHtmlOfTokyuBus } from '../../lib/get-html-of-tokyu-bus';
 import { parseHtmlOfTokyuBus } from '../../lib/parse-html-of-tokyu-bus';
 import { logger } from '../../lib/logger';
 import { getMessageFromInformation } from '../../lib/get-message-from-information';
+import { makeApiAiWebhookResult } from '../../lib/make-api-ai-webhook-result';
 
 
 const apiRouter = new Router();
@@ -46,6 +47,24 @@ apiRouter.get('/next', async (ctx) => {
   }
 
   ctx.body = message;
+});
+
+
+/**
+ * webhook for api.ai
+ */
+apiRouter.get('/webhook', async (ctx) => {
+  let message = '';
+  const nextInformation = ctx.state[busInfoArray][0];
+
+  // there is no coming bus
+  if (!nextInformation) {
+    message = 'There is no coming bus';
+  } else {
+    message = getMessageFromInformation(nextInformation);
+  }
+
+  ctx.body = makeApiAiWebhookResult(message);
 });
 
 
