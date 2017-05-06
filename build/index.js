@@ -9,9 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Koa = require("koa");
+const koaBodyparser = require("koa-bodyparser");
 const logger_1 = require("./lib/logger");
 const routers_1 = require("./routers");
 const app = new Koa();
+app.use(koaBodyparser());
 app.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
     const start = Date.now();
     yield next();

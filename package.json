@@ -1,6 +1,6 @@
 {
   "name": "my-tokyu-bus",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "API server for Actions on Google",
   "main": "index.js",
   "engines": {
@@ -28,12 +28,14 @@
   "dependencies": {
     "jsdom": "^10.1.0",
     "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.1.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
     "@types/jsdom": "^2.0.30",
     "@types/koa": "^2.0.39",
+    "@types/koa-bodyparser": "^3.0.23",
     "@types/koa-router": "^7.0.22",
     "@types/winston": "^2.3.1",
     "tslint": "^5.1.0",

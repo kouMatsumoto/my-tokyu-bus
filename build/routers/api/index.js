@@ -38,7 +38,8 @@ apiRouter.get('/next', (ctx) => __awaiter(this, void 0, void 0, function* () {
     }
     ctx.body = message;
 }));
-apiRouter.get('/webhook', (ctx) => __awaiter(this, void 0, void 0, function* () {
+apiRouter.post('/webhook', (ctx) => __awaiter(this, void 0, void 0, function* () {
+    logger_1.logger.info('request from api.ai', { body: ctx.request.body });
     let message = '';
     const nextInformation = ctx.state[busInfoArray][0];
     if (!nextInformation) {
