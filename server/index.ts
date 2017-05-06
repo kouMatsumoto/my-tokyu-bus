@@ -1,9 +1,12 @@
 import * as Koa from 'koa';
+import * as koaBodyparser from 'koa-bodyparser';
 import { logger } from './lib/logger';
 import { rootRouter } from './routers';
 
-
 const app = new Koa();
+
+app.use(koaBodyparser());
+
 
 /**
  * logging path and time for development

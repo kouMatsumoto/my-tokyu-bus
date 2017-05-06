@@ -53,7 +53,9 @@ apiRouter.get('/next', async (ctx) => {
 /**
  * webhook for api.ai
  */
-apiRouter.get('/webhook', async (ctx) => {
+apiRouter.post('/webhook', async (ctx) => {
+  logger.info('request from api.ai', { body: ctx.request.body });
+
   let message = '';
   const nextInformation = ctx.state[busInfoArray][0];
 
