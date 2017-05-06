@@ -1,6 +1,6 @@
 {
   "name": "my-tokyu-bus",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "API server for Actions on Google",
   "main": "index.js",
   "engines": {
