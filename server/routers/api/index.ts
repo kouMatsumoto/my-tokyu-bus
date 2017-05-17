@@ -15,7 +15,10 @@ const busInfoArray = Symbol('busInfoArray');
  * middleware to fetch and set tokyu-bus information
  */
 apiRouter.use(async (ctx, next) => {
-  const result = await getHtmlOfTokyuBus();
+  const from = '2598';
+  const to = '2336';
+
+  const result = await getHtmlOfTokyuBus(from, to);
   const infoArray =  parseHtmlOfTokyuBus(result.contents);
   ctx.state[busInfoArray] = infoArray;
   logger.debug('fetched bus info', {infoArray: infoArray});

@@ -24,12 +24,12 @@ import { fetchHtml } from './fetch-html';
  */
 
 // 2017-05-18: old url, this is url of '路線別バス位置情報'
-const urlOfTokyuBus = 'http://tokyu.bus-location.jp/blsys/navi?VID=rsl&EID=nt&PRM=&SCT=1&DSMK=2598&DSN=%E4%B8%8B%E9%A6%AC%E4%B8%80%E4%B8%81%E7%9B%AE&ASMK=2336&ASN=%E6%B8%8B%E8%B0%B7%E9%A7%85&FDSN=0&FASN=0&RAMK=6';  // eslint-disable-max-line-length
+// const urlOfTokyuBus = 'http://tokyu.bus-location.jp/blsys/navi?VID=rsl&EID=nt&PRM=&SCT=1&DSMK=2598&DSN=%E4%B8%8B%E9%A6%AC%E4%B8%80%E4%B8%81%E7%9B%AE&ASMK=2336&ASN=%E6%B8%8B%E8%B0%B7%E9%A7%85&FDSN=0&FASN=0&RAMK=6';  // eslint-disable-max-line-length
 
 // 2017-05-18: new url, this is url of '停留所別バス接近情報'
-// const urlOfTokyuBusNavi = 'http://tokyu.bus-location.jp/blsys/navi?VID=lsc&EID=nt&SCT=2&DSMK=2598&ASMK=2336';
+const urlOfTokyuBusNavi = 'http://tokyu.bus-location.jp/blsys/navi?VID=lsc&EID=nt&SCT=2';
 
-
-export function getHtmlOfTokyuBus(): Promise<HttpResult> {
-  return fetchHtml(urlOfTokyuBus);
+export function getHtmlOfTokyuBus(from: string, to: string): Promise<HttpResult> {
+  const requestUrl = `${urlOfTokyuBusNavi}&DSMK=${from}&ASMK=${to}`;
+  return fetchHtml(requestUrl);
 }
