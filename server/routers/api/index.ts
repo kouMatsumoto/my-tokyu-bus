@@ -15,7 +15,15 @@ const busInfoArray = Symbol('busInfoArray');
  * middleware to fetch and set tokyu-bus information
  */
 apiRouter.use(async (ctx, next) => {
-  const result = await getHtmlOfTokyuBus();
+  // validate queries (from and to)
+  const from = ctx.query['from'];
+  const to = ctx.query['to'];
+  if (typeof from !== 'string' || typeof to !== 'string' || from === '' || to === '') {
+    // TODO: update error handling
+    ctx.throw(500, 'query error. from and to is required');
+  }
+
+  const result = await getHtmlOfTokyuBus(from, to);
   const infoArray =  parseHtmlOfTokyuBus(result.contents);
   ctx.state[busInfoArray] = infoArray;
   logger.debug('fetched bus info', {infoArray: infoArray});

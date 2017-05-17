@@ -11,7 +11,7 @@ const { JSDOM } = jsdom;
  * @param text {string} - e.g. '下馬一行 12分待ち', '(折)下馬一行 ', '渋谷駅行 ', '下馬一行 02分待ち'
  * @returns {TokyuBusInformation}
  */
-function parseTextOfDDElement(text: string): TokyuBusInformation {
+function parseTextOfElement(text: string): TokyuBusInformation {
   const retval: TokyuBusInformation = {
     coming: false,
     gone: false,
@@ -37,30 +37,31 @@ function parseTextOfDDElement(text: string): TokyuBusInformation {
 }
 
 
+
+// identifier name of element which has bus information
+const needle = 'td.businfo em';
+
 /**
  * Parse html of tokyu-bus-navi
  *
  * @param html {string} - fetched html of http://tokyu.bus-location.jp/blsys/navi
  * @returns {TokyuBusInformation[]}
  */
-export function parseHtmlOfTokyuBus(html?: string): TokyuBusInformation[] {
+export function parseHtmlOfTokyuBus(html?: string) {
   const dom = new JSDOM(html);
-  const tableDOM = dom.window.document.querySelector('table.routeListTbl');
 
-  // get dl elements in table
-  const ddElms = tableDOM.querySelectorAll('dd');
+  const businfoElms = dom.window.document.querySelectorAll(needle);
 
-  // result variable to store
   const infoArray: TokyuBusInformation[] = [];
-
-  for (let dd of ddElms) {
-    const info = parseTextOfDDElement(dd.textContent);
+  for (let elm of businfoElms) {
+    const info = parseTextOfElement(elm.textContent);
     if (info.coming) {
       infoArray.push(info);
     }
   }
 
-  // order `infoArray` by `waitingTime` asc
+  // sort `infoArray` by `waitingTime` asc
   infoArray.sort((a, b) => a.waitingTime - b.waitingTime);
+
   return infoArray;
 }

@@ -4,6 +4,17 @@
 
 
 /**
+ * type of result of fetchHtml
+ */
+export interface HttpResult {
+  status: number;
+  header: any;
+  contents: string;
+  error?: any;
+}
+
+
+/**
  * type of parseHtmlOfTokyuBus return value
  *
  * - coming: is bus coming now ?
