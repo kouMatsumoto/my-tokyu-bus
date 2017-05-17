@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-function parseTextOfDDElement(text) {
+function parseTextOfElement(text) {
     const retval = {
         coming: false,
         gone: false,
@@ -21,13 +21,13 @@ function parseTextOfDDElement(text) {
     }
     return retval;
 }
+const needle = 'td.businfo em';
 function parseHtmlOfTokyuBus(html) {
     const dom = new JSDOM(html);
-    const tableDOM = dom.window.document.querySelector('table.routeListTbl');
-    const ddElms = tableDOM.querySelectorAll('dd');
+    const businfoElms = dom.window.document.querySelectorAll(needle);
     const infoArray = [];
-    for (let dd of ddElms) {
-        const info = parseTextOfDDElement(dd.textContent);
+    for (let elm of businfoElms) {
+        const info = parseTextOfElement(elm.textContent);
         if (info.coming) {
             infoArray.push(info);
         }
