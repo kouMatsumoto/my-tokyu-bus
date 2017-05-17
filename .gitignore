@@ -40,8 +40,8 @@ jspm_packages
 .idea
 
 # ignore transpile result
-server/**/*.js
-server/**/*.js.map
+src/**/*.js
+src/**/*.js.map
 
 # ignore log files
 log/**/*

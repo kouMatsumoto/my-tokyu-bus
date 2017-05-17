@@ -8,10 +8,10 @@
     "npm": ">=4.2.0"
   },
   "scripts": {
-    "develop": "tsc -p ./server/tsconfig.json -w",
-    "lint": "tslint -p ./server/tslint.json",
-    "server": "node ./server/index.js",
-    "build": "tsc -p ./server/production.tsconfig.json",
+    "develop": "tsc -p ./src/tsconfig.json -w",
+    "lint": "tslint -p ./src/tslint.json",
+    "server": "node ./src/index.js",
+    "build": "tsc -p ./src/production.tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
