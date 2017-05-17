@@ -18,7 +18,12 @@ const apiRouter = new Router();
 exports.apiRouter = apiRouter;
 const busInfoArray = Symbol('busInfoArray');
 apiRouter.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
-    const result = yield get_html_of_tokyu_bus_1.getHtmlOfTokyuBus();
+    const from = ctx.query['from'];
+    const to = ctx.query['to'];
+    if (typeof from !== 'string' || typeof to !== 'string' || from === '' || to === '') {
+        ctx.throw(500, 'query error. from and to is required');
+    }
+    const result = yield get_html_of_tokyu_bus_1.getHtmlOfTokyuBus(from, to);
     const infoArray = parse_html_of_tokyu_bus_1.parseHtmlOfTokyuBus(result.contents);
     ctx.state[busInfoArray] = infoArray;
     logger_1.logger.debug('fetched bus info', { infoArray: infoArray });

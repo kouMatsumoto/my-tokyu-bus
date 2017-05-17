@@ -10,13 +10,13 @@ exports.logger = new (winston.Logger)({
             colorize: true
         }),
         new winston.transports.File({
-            filename: path_1.join(index_1.SERVER_ROOT, '/log/development.log'),
+            filename: path_1.join(index_1.LOG_ROOT, 'development.log'),
             json: true
         })
     ],
     exceptionHandlers: [
         new winston.transports.File({
-            filename: path_1.join(index_1.SERVER_ROOT, '/log/exception.log'),
+            filename: path_1.join(index_1.LOG_ROOT, 'exception.log'),
             json: true
         })
     ],

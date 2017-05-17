@@ -1,6 +1,6 @@
 import * as winston from 'winston';
 import { join } from 'path';
-import { SERVER_ROOT } from '../config/index';
+import { LOG_ROOT } from '../config/index';
 
 
 export const logger = new (winston.Logger)({
@@ -10,13 +10,13 @@ export const logger = new (winston.Logger)({
       colorize: true
     }),
     new winston.transports.File({
-      filename: join(SERVER_ROOT, '/log/development.log'),
+      filename: join(LOG_ROOT, 'development.log'),
       json: true
     })
   ],
   exceptionHandlers: [
     new winston.transports.File({
-      filename: join(SERVER_ROOT, '/log/exception.log'),
+      filename: join(LOG_ROOT, 'exception.log'),
       json: true
     })
   ],
