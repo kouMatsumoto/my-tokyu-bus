@@ -29,6 +29,13 @@ export interface TokyuBusInformation {
 
 
 /**
+ * default interface of result JSON of web api.
+ */
+export interface WebApiResult {
+  data: TokyuBusInformation[];
+}
+
+/**
  * see https://docs.api.ai/docs/webhook
  */
 export interface ApiAiWebhookResult {
