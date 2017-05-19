@@ -4,6 +4,7 @@ import { parseHtmlOfTokyuBus } from '../../lib/parse-html-of-tokyu-bus';
 import { logger } from '../../lib/logger';
 import { getMessageFromInformation } from '../../lib/get-message-from-information';
 import { makeApiAiWebhookResult } from '../../lib/make-api-ai-webhook-result';
+import { makeWebApiResultObject } from '../../lib/make-web-api-result-object';
 
 
 const apiRouter = new Router();
@@ -36,7 +37,7 @@ apiRouter.use(async (ctx, next) => {
  * return all information array json.
  */
 apiRouter.get('/', async (ctx) => {
-  ctx.body = ctx.state[busInfoArray];
+  ctx.body = makeWebApiResultObject(ctx.state[busInfoArray]);
 });
 
 
