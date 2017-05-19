@@ -4,7 +4,7 @@
 
 
 /**
- * type of result of fetchHtml
+ * type of result of HTML fetch function of mine
  */
 export interface HttpResult {
   status: number;
