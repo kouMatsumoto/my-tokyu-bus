@@ -14,6 +14,7 @@ const parse_html_of_tokyu_bus_1 = require("../../lib/parse-html-of-tokyu-bus");
 const logger_1 = require("../../lib/logger");
 const get_message_from_information_1 = require("../../lib/get-message-from-information");
 const make_api_ai_webhook_result_1 = require("../../lib/make-api-ai-webhook-result");
+const make_web_api_result_object_1 = require("../../lib/make-web-api-result-object");
 const apiRouter = new Router();
 exports.apiRouter = apiRouter;
 const busInfoArray = Symbol('busInfoArray');
@@ -30,7 +31,7 @@ apiRouter.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
     yield next();
 }));
 apiRouter.get('/', (ctx) => __awaiter(this, void 0, void 0, function* () {
-    ctx.body = ctx.state[busInfoArray];
+    ctx.body = make_web_api_result_object_1.makeWebApiResultObject(ctx.state[busInfoArray]);
 }));
 apiRouter.get('/next', (ctx) => __awaiter(this, void 0, void 0, function* () {
     let message = '';

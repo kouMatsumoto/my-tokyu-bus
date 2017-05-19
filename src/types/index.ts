@@ -4,7 +4,7 @@
 
 
 /**
- * type of result of fetchHtml
+ * type of result of HTML fetch function of mine
  */
 export interface HttpResult {
   status: number;
@@ -27,6 +27,13 @@ export interface TokyuBusInformation {
   waitingTime: number;
 }
 
+
+/**
+ * default interface of result JSON of web api.
+ */
+export interface WebApiResult {
+  data: TokyuBusInformation[];
+}
 
 /**
  * see https://docs.api.ai/docs/webhook
