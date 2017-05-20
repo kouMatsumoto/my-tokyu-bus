@@ -5,6 +5,7 @@ import { logger } from '../../lib/logger';
 import { getMessageFromInformation } from '../../lib/get-message-from-information';
 import { makeApiAiWebhookResult } from '../../lib/make-api-ai-webhook-result';
 import { makeWebApiResultObject } from '../../lib/make-web-api-result-object';
+import { makeWebApiErrorResultObject } from '../../lib/make-web-api-error-result-object';
 
 
 const apiRouter = new Router();
@@ -21,7 +22,7 @@ apiRouter.use(async (ctx, next) => {
     await next();
   } catch (e) {
     ctx.status = e.status || 500;
-    ctx.body = e.message;
+    ctx.body = makeWebApiErrorResultObject(e.message);
   }
 });
 
