@@ -35,6 +35,14 @@ export interface WebApiResult {
   data: TokyuBusInformation[];
 }
 
+
+/**
+ * default interface of error result JSON of web api.
+ */
+export interface WebApiErrorResult {
+  message: string;
+}
+
 /**
  * see https://docs.api.ai/docs/webhook
  */
