@@ -13,6 +13,20 @@ const busInfoArray = Symbol('busInfoArray');
 
 
 /**
+ * Error handling for this api router
+ * it's better move this error handling to global router
+ */
+apiRouter.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (e) {
+    ctx.status = e.status || 500;
+    ctx.body = e.message;
+  }
+});
+
+
+/**
  * middleware to fetch and set tokyu-bus information
  */
 apiRouter.use(async (ctx, next) => {
