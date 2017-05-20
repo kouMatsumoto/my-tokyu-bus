@@ -15,9 +15,19 @@ const logger_1 = require("../../lib/logger");
 const get_message_from_information_1 = require("../../lib/get-message-from-information");
 const make_api_ai_webhook_result_1 = require("../../lib/make-api-ai-webhook-result");
 const make_web_api_result_object_1 = require("../../lib/make-web-api-result-object");
+const make_web_api_error_result_object_1 = require("../../lib/make-web-api-error-result-object");
 const apiRouter = new Router();
 exports.apiRouter = apiRouter;
 const busInfoArray = Symbol('busInfoArray');
+apiRouter.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
+    try {
+        yield next();
+    }
+    catch (e) {
+        ctx.status = e.status || 500;
+        ctx.body = make_web_api_error_result_object_1.makeWebApiErrorResultObject(e.message);
+    }
+}));
 apiRouter.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
     const from = ctx.query['from'];
     const to = ctx.query['to'];
