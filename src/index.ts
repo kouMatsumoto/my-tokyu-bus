@@ -4,6 +4,7 @@ import * as koaStatic from 'koa-static';
 import { rootRouter } from './routers';
 import { PUBLIC_ROOT } from './config/index';
 import { processTimeLogger } from './middlewares/process-time-logger';
+import { logger } from './lib/logger';
 
 const app = new Koa();
 
@@ -21,6 +22,5 @@ app.use(processTimeLogger);
  */
 app.use(rootRouter.routes());
 
-app.listen(3000, () => {
-  console.log('server starts');
-});
+
+app.listen(3000, () => logger.info('server has started', process.env));
