@@ -1,9 +1,9 @@
 import * as Koa from 'koa';
 import * as koaBodyparser from 'koa-bodyparser';
 import * as koaStatic from 'koa-static';
-import { logger } from './lib/logger';
 import { rootRouter } from './routers';
 import { PUBLIC_ROOT } from './config/index';
+import { processTimeLogger } from './middlewares/process-time-logger';
 
 const app = new Koa();
 
@@ -12,17 +12,15 @@ app.use(koaBodyparser());
 
 
 /**
- * logging path and time for development
+ * Log process time when development
  */
-app.use(async (ctx, next) => {
-  const start = Date.now();
-  await next();
+app.use(processTimeLogger);
 
-  const ms: number = Date.now() - start;
-  logger.debug(`${ctx.method} ${ctx.url} - ${ms}ms`);
-});
-
-
+/**
+ * Main Router
+ */
 app.use(rootRouter.routes());
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log('server starts');
+});
