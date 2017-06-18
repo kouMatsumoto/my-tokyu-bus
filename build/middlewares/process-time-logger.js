@@ -17,6 +17,6 @@ exports.processTimeLogger = (ctx, next) => __awaiter(this, void 0, void 0, funct
         logger_1.logger.debug(`${ctx.method} ${ctx.url} - ${ms}ms`);
     }
     else {
-        next();
+        yield next();
     }
 });

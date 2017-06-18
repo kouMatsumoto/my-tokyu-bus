@@ -17,12 +17,12 @@ dummyApiRouter.get('/', (ctx) => __awaiter(this, void 0, void 0, function* () {
         {
             coming: true,
             gone: false,
-            waitingTime: 1
+            waitTimes: 1
         },
         {
             coming: true,
             gone: false,
-            waitingTime: 4
+            waitTimes: 4
         },
     ];
     ctx.body = make_web_api_result_object_1.makeWebApiResultObject(dummyInfo);
