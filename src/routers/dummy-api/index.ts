@@ -12,12 +12,12 @@ dummyApiRouter.get('/', async (ctx) => {
     {
       coming: true,
       gone: false,
-      waitingTime: 1
+      waitTimes: 1
     },
     {
       coming: true,
       gone: false,
-      waitingTime: 4
+      waitTimes: 4
     },
   ];
 
