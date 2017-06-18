@@ -29,12 +29,14 @@ apiRouter.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
     }
 }));
 apiRouter.use((ctx, next) => __awaiter(this, void 0, void 0, function* () {
-    const from = ctx.query['from'];
-    const to = ctx.query['to'];
-    if (typeof from !== 'string' || typeof to !== 'string' || from === '' || to === '') {
-        ctx.throw(500, 'query error. from and to is required');
+    const departure = ctx.query['departure'];
+    const arrival = ctx.query['arrival'];
+    if (typeof departure !== 'string' || typeof arrival !== 'string' || departure === '' || arrival === '') {
+        ctx.throw(500, 'query error. departure and arrival is required');
     }
-    const result = yield get_html_of_tokyu_bus_1.getHtmlOfTokyuBus(from, to);
+    logger_1.logger.debug('requested departure', { departure: departure });
+    logger_1.logger.debug('requested arrival', { arrival: arrival });
+    const result = yield get_html_of_tokyu_bus_1.getHtmlOfTokyuBus(departure, arrival);
     const infoArray = parse_html_of_tokyu_bus_1.parseHtmlOfTokyuBus(result.contents);
     ctx.state[busInfoArray] = infoArray;
     logger_1.logger.debug('fetched bus info', { infoArray: infoArray });

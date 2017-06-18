@@ -10,6 +10,6 @@ export const processTimeLogger: Middleware = async (ctx, next) => {
     logger.debug(`${ctx.method} ${ctx.url} - ${ms}ms`);
 
   } else {
-    next();
+    await next();
   }
 };

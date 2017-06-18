@@ -11,29 +11,20 @@ const { JSDOM } = jsdom;
  * @param text {string} - e.g. '下馬一行 12分待ち', '(折)下馬一行 ', '渋谷駅行 ', '下馬一行 02分待ち'
  * @returns {TokyuBusInformation}
  */
-function parseTextOfElement(text: string): TokyuBusInformation {
-  const retval: TokyuBusInformation = {
-    coming: false,
-    gone: false,
-    waitingTime: 0
-  };
-
+function parseTextOfElement(text: string): TokyuBusInformation | null {
   const regexp = /([0-9]+)分待ち/iu;
   const matchResult = text.match(regexp); // e.g. ["12分待ち","12"], null
 
+  // when bus is coming
   if (Array.isArray(matchResult)) {
-    // when bus is coming
-    retval.coming = true;
-    retval.gone = false;
-    retval.waitingTime = parseInt(matchResult[1]);
+    return {
+      waitTimes: parseInt(matchResult[1])
+    };
 
+  // when no bus is coming
   } else {
-    // when bus had gone
-    retval.coming = false;
-    retval.gone = true;
+    return null;
   }
-
-  return retval;
 }
 
 
@@ -55,13 +46,15 @@ export function parseHtmlOfTokyuBus(html?: string) {
   const infoArray: TokyuBusInformation[] = [];
   for (let elm of businfoElms) {
     const info = parseTextOfElement(elm.textContent);
-    if (info.coming) {
+    if (info) {
       infoArray.push(info);
     }
   }
 
-  // sort `infoArray` by `waitingTime` asc
-  infoArray.sort((a, b) => a.waitingTime - b.waitingTime);
+  // sort `infoArray` by `waitTimes` asc
+  if (0 < infoArray.length) {
+    infoArray.sort((a, b) => a.waitTimes - b.waitTimes);
+  }
 
   return infoArray;
 }

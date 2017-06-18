@@ -32,14 +32,18 @@ apiRouter.use(async (ctx, next) => {
  */
 apiRouter.use(async (ctx, next) => {
   // validate queries (from and to)
-  const from = ctx.query['from'];
-  const to = ctx.query['to'];
-  if (typeof from !== 'string' || typeof to !== 'string' || from === '' || to === '') {
+  const departure = ctx.query['departure'];
+  const arrival = ctx.query['arrival'];
+  if (typeof departure !== 'string' || typeof arrival !== 'string' || departure === '' || arrival === '') {
     // TODO: update error handling
-    ctx.throw(500, 'query error. from and to is required');
+    ctx.throw(500, 'query error. departure and arrival is required');
   }
 
-  const result = await getHtmlOfTokyuBus(from, to);
+  logger.debug('requested departure', {departure: departure});
+  logger.debug('requested arrival', {arrival: arrival});
+
+
+  const result = await getHtmlOfTokyuBus(departure, arrival);
   const infoArray =  parseHtmlOfTokyuBus(result.contents);
   ctx.state[busInfoArray] = infoArray;
   logger.debug('fetched bus info', {infoArray: infoArray});
