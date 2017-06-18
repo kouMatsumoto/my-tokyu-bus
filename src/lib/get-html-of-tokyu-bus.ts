@@ -1,5 +1,6 @@
 import { HttpResult } from '../types/index';
 import { fetchHtml } from './fetch-html';
+import { tokyuBusNameIdMap } from './tokyu-bus-name-id-map';
 
 /**
  * # About URL of tokyu.bus-location
@@ -14,9 +15,9 @@ import { fetchHtml } from './fetch-html';
  * - SID:
  * - PRM:
  * - SCT: Used to differentiate pages. (this is used with VID and EID)
- * - DSMK: Source bus stop number
+ * - DSMK: (required) Source bus stop number
  * - DSN: Source bus stop name
- * - ASMK: Destination bus stop number
+ * - ASMK: (required) Destination bus stop number
  * - ASN: Destination bus stop name
  * - FASN:
  * - RAMK: Bus route number
@@ -29,7 +30,16 @@ import { fetchHtml } from './fetch-html';
 // 2017-05-18: new url, this is url of '停留所別バス接近情報'
 const urlOfTokyuBusNavi = 'http://tokyu.bus-location.jp/blsys/navi?VID=lsc&EID=nt&SCT=2';
 
-export function getHtmlOfTokyuBus(from: string, to: string): Promise<HttpResult> {
-  const requestUrl = `${urlOfTokyuBusNavi}&DSMK=${from}&ASMK=${to}`;
+/**
+ *
+ * @param {string} departure - name of a bus-stop user get on.
+ * @param {string} arrival - name of a bus-stop user get off.
+ * @return {Promise<HttpResult>}
+ */
+export function getHtmlOfTokyuBus(departure: string, arrival: string): Promise<HttpResult> {
+  const dsmk = tokyuBusNameIdMap.get(departure);
+  const asmk = tokyuBusNameIdMap.get(arrival);
+
+  const requestUrl = `${urlOfTokyuBusNavi}&DSMK=${dsmk}&ASMK=${asmk}`;
   return fetchHtml(requestUrl);
 }
