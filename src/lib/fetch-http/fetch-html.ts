@@ -1,5 +1,5 @@
 import * as http from 'http';
-import { HttpResult } from '../types';
+import { HttpResult } from '../../types';
 
 
 /**
