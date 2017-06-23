@@ -6,9 +6,13 @@ import { getMessageFromInformation } from '../../lib/get-message-from-informatio
 import { makeApiAiWebhookResult } from '../../lib/make-api-ai-webhook-result';
 import { makeWebApiResultObject } from '../../lib/make-web-api-result-object';
 import { makeWebApiErrorResultObject } from '../../lib/make-web-api-error-result-object';
+import { timetableRouter } from './timetable/index';
 
 
 const apiRouter = new Router();
+
+apiRouter.use('/timetable', timetableRouter.routes());
+
 
 const busInfoArray = Symbol('busInfoArray');
 
