@@ -1,4 +1,4 @@
-<!--
+export const BUS_LOCATION_RESULT_HTML_TEXT = `<!--
 
 2017-06-23
 This html is get result of url below.
@@ -2225,3 +2225,4 @@ http://tokyu.bus-location.jp/blsys/navi?VID=rsl&EID=nt&PRM=&SCT=1&DSMK=2598&DSN=
 
 </body>
 </html>
+`;

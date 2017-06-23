@@ -1,4 +1,4 @@
-<!--
+export const BUS_TIMETABLE_RESULT_HTML_TEXT = `<!--
 
 2017-06-23
 This html is get result of url below.
@@ -69,3 +69,4 @@ http://www.tokyubus.co.jp/keitai/i/index.cgi?disp_history=2122232425030405&searc
 <a href="./index.cgi" accesskey="0">0. ﾄｯﾌﾟへ</a><br>
 
 </body></html>
+`;
