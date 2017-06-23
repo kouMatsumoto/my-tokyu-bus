@@ -1,11 +1,14 @@
 import * as http from 'http';
-import { HttpResult } from '../types';
+import { HttpResult } from '../../types';
+import { queryParser } from './query-parser';
 
 
 /**
  * function to execute HTTP-GET request
  */
-export function fetchHtml(url: string): Promise<HttpResult> {
+export function fetchHtml(url: string, queryObj: {[key: string]: string}): Promise<HttpResult> {
+  const urlWithQuery = url + queryParser(queryObj);
+
   return new Promise((resolve, reject) => {
     const result: HttpResult = {
       status: 0,
@@ -13,7 +16,7 @@ export function fetchHtml(url: string): Promise<HttpResult> {
       contents: ''
     };
 
-    const req = http.get(url, (res) => {
+    const req = http.get(urlWithQuery, (res) => {
       result.status = res.statusCode || 400;
       result.header = res.headers;
 

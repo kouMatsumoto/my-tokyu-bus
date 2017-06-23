@@ -1,5 +1,5 @@
 import { HttpResult } from '../types/index';
-import { fetchHtml } from './fetch-html';
+import { fetchHtml } from './fetch-http/fetch-html';
 import { tokyuBusNameIdMap } from './tokyu-bus-name-id-map';
 
 /**
