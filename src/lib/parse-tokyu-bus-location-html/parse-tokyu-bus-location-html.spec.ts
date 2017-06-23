@@ -1,6 +1,6 @@
-import { BUS_LOCATION_RESULT_HTML_TEXT } from '../mocks/bus-location-result.html';
+import { BUS_LOCATION_RESULT_HTML_TEXT } from '../../mocks/bus-location-result.html';
 import { parseTokyuBusLocationHtml } from './parse-tokyu-bus-location-html';
-import { BusLocationData } from '../types/bus-location-data';
+import { BusLocationData } from '../../types/bus-location-data';
 
 
 const expected: BusLocationData[] = [
