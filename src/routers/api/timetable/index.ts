@@ -19,7 +19,12 @@ _router.use(async (ctx, next) => {
 
 
 /**
- * return all information array json.
+ * query
+ *   *disp_history - to identify file to refer.
+ *   *updown_cd
+ *   *pole_cd
+ *   *busstop_cd - departure bus-stop
+ *   *keito_cd
  */
 _router.get('/', async (ctx) => {
   ctx.body = '/api/timetable';
