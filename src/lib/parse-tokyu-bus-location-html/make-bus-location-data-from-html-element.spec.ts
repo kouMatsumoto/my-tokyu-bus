@@ -1,5 +1,5 @@
 import { makeBusLocationDataFromElement } from './make-bus-location-data-from-html-element';
-import { BusLocationData } from '../types/bus-location-data';
+import { BusLocationData } from '../../types/bus-location-data';
 
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
