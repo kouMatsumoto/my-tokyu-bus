@@ -25,9 +25,9 @@ _router.use(async (ctx, next) => {
  * query
  *   *disp_history - to identify file to refer (2122232425030405)
  *   *updown_cd - direction to go. (1 or 2)
- *   *pole_cd - ? e.g. 01, 24
- *   *busstop_cd - departure bus-stop
- *   *keito_cd - destination
+ *   *pole_cd - specify a bus-stop to get-on among same name (e.g. 01, 24)
+ *   *busstop_cd - departure bus-stop number (e.g. 1710409)
+ *   *keito_cd - bus-route type number (e.g. 616101)
  */
 _router.get('/', async (ctx) => {
   ctx.body = '/api/timetable';
