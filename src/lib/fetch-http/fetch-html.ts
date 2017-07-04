@@ -6,7 +6,7 @@ import { queryParser } from './query-parser';
 /**
  * function to execute HTTP-GET request
  */
-export function fetchHtml(url: string, queryObj: {[key: string]: string}): Promise<HttpResult> {
+export function fetchHtml(url: string, queryObj: {[key: string]: string} = {}): Promise<HttpResult> {
   const urlWithQuery = url + queryParser(queryObj);
 
   return new Promise((resolve, reject) => {
