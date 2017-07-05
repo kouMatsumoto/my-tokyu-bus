@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/kouMatsumoto/my-tokyu-bus#readme",
   "dependencies": {
+    "encoding-japanese": "^1.0.25",
+    "jconv": "^0.1.5",
     "jsdom": "^10.1.0",
     "kcors": "^2.2.1",
     "koa": "^2.2.0",
@@ -35,6 +37,7 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "@types/encoding-japanese": "^1.0.15",
     "@types/jasmine": "^2.5.52",
     "@types/jsdom": "^2.0.30",
     "@types/kcors": "^2.2.1",

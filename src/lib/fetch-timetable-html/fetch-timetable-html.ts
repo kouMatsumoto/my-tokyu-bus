@@ -4,7 +4,7 @@
 
 // 2017-05-18: new url, this is url of '停留所別バス接近情報'
 import { HttpResult } from '../../types/index';
-import { fetchHtml } from '../fetch-http/fetch-html';
+import { fetchSJISHtml } from '../fetch-http/fetch-html';
 const urlOfTokyuBusTimetable = 'http://www.tokyubus.co.jp/keitai/i/index.cgi';
 
 
@@ -22,10 +22,10 @@ export function fetchTimetableHTML(): Promise<HttpResult> {
     keito_cd: '612101',
     updown_cd: '2',
     pole_cd: '01',
-    mmdd: '07/04',
+    mmdd: '07/05',
     hh: '21',
     mm: '50'
   };
 
-  return fetchHtml(urlOfTokyuBusTimetable, options);
+  return fetchSJISHtml(urlOfTokyuBusTimetable, options);
 }
