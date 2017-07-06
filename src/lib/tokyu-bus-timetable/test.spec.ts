@@ -1,5 +1,7 @@
 import { fetchBusStopNameSearchHTML } from './fetch-bus-stop-name-search-html';
 import { parseBusStopNameSearchHTML } from './parse-bus-stop-name-search-html';
+import { useAsync } from '../../../spec/support/helpers/use-async';
+
 
 describe('My Test', () => {
   fit('should conduct my-test', useAsync(async () => {
@@ -8,18 +10,3 @@ describe('My Test', () => {
     console.log(parsed);
   }));
 });
-
-
-/**
- * helper function to use async/await syntax in jasmine.
- *
- * Todo: move to helper
- *
- * @param asyncFunction
- * @return {(done) => void}
- */
-function useAsync(asyncFunction: () => Promise<void>) {
-  return (done: Function) => {
-    asyncFunction().then(() => done()).catch((e: Error) => { fail(e); done(); });
-  };
-}
