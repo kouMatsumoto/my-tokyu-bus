@@ -6,7 +6,7 @@ import { busRoutesSelectHTML } from './bus-routes-select-html.mock';
 
 
 describe('fetchBusRoutesSelectHTML', () => {
-  fit('should fetch expected html', useAsync(async () => {
+  it('should fetch expected html', useAsync(async () => {
     const searchHTTPResult = await fetchBusStopNameSearchHTML('下馬');
     const busstopNameData = parseBusStopNameSearchHTML(searchHTTPResult.contents);
     const simouma1 = busstopNameData[0];
