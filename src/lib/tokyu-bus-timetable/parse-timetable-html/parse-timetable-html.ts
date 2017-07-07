@@ -1,4 +1,4 @@
-import { INDEX_OF_TIMETABLE_TEXT, NEEDLE_TO_MAIN_CONTENT_ELM_OM_TIMETABLE } from '../../config/constants';
+import { INDEX_OF_TIMETABLE_TEXT, NEEDLE_TO_MAIN_CONTENT_ELM_OM_TIMETABLE } from '../../../config/constants';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
@@ -9,7 +9,7 @@ const { JSDOM } = jsdom;
  * @param {string} htmlText - html fetched from tokyu-bus-location
  * @return {string[]} - e.g. [ '21:13', '21:14', '21:20' ]
  */
-export function parseTokyuBusTimetableHtml(htmlText: string): string[] {
+export function parseTimetableHtml(htmlText: string): string[] {
   const dom = new JSDOM(htmlText);
 
   // This is pre element contains textNode of timetable
