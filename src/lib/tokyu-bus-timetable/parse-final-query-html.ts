@@ -2,7 +2,7 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 
-interface ParsedFinalQueryData {
+export interface ParsedFinalQueryData {
   disp_history: string;
   search_str: string;
   page: string;
