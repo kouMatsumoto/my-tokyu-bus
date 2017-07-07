@@ -3,18 +3,20 @@
     "module": "commonjs",
     "target": "es6",
     "lib": ["es5", "es6", "es2015", "es2017", "dom"],
-    "outDir": "../build",
-    "sourceMap": false,
+    "sourceMap": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "removeComments": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "typeRoots" : ["../node_modules/@types"],
-    "types" : ["node"]
+    "typeRoots" : [
+      "./node_modules/@types"
+    ],
+    "types" : ["node", "jasmine"]
   },
   "include": [
-    "./**/*.ts"
+    "./src/**/*.ts",
+    "./spec/**/*.ts"
   ],
   "exclude": [
     "node_modules"
