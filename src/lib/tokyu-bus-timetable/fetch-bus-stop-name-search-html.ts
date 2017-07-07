@@ -1,9 +1,10 @@
 import * as moment from 'moment';
 import { fetchSJISHtml } from '../fetch-http/fetch-html';
 import { sjisURLEncode } from '../sjis-url-encode/sjis-url-encode';
+import { TOKYU_BUS_TIMETABLE_URL } from '../../config/constants';
 
 // endpoint
-const url = 'http://www.tokyubus.co.jp/keitai/i/index.cgi';
+const url = TOKYU_BUS_TIMETABLE_URL;
 // version-number of timetable. (latest from 2017-07-06)
 const disp_history = '111213';
 // unknown query but may be valid if '7'.
