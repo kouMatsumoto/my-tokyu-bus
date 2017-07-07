@@ -1,5 +1,5 @@
-import { parseBusStopNameSearchHTML } from './parse-bus-stop-name-search-html';
-import { busStopNameSearchHTMLMockString } from './bus-stop-name-search-html.mock';
+import { parseForQueryString } from './parse-for-query-string';
+import { busStopNameSearchHTMLMockString } from '../bus-stop-name-search-html/bus-stop-name-search-html.mock';
 
 const expected = [
   {
@@ -20,9 +20,9 @@ const expected = [
   }
 ];
 
-describe('parseBusStopNameSearchHTML', () => {
+describe('parseForQueryString', () => {
   it('should parse the html properly', () => {
-    const actual = parseBusStopNameSearchHTML(busStopNameSearchHTMLMockString);
+    const actual = parseForQueryString(busStopNameSearchHTMLMockString);
     expect(actual).toEqual(expected);
   });
 });

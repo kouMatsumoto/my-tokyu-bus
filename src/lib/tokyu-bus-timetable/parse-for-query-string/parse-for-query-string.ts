@@ -1,17 +1,17 @@
-import { getQueryString } from '../get-query-string/get-query-string';
+import { getQueryString } from '../../get-query-string/get-query-string';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 
-interface ParsedBusStopNameSearchData {
+interface ParsedQueryStringObject {
   name: string;
   queryString: string;
 }
 
 /**
- *
+ * parse a HTML to construct query-string data.
  */
-export function parseBusStopNameSearchHTML(html: string) {
+export function parseForQueryString(html: string) {
   const dom = new JSDOM(html);
   const anchorElements = dom.window.document.querySelectorAll('a');
 
@@ -20,7 +20,7 @@ export function parseBusStopNameSearchHTML(html: string) {
     return [];
   }
 
-  const result: ParsedBusStopNameSearchData[] = [];
+  const result: ParsedQueryStringObject[] = [];
   const AnchorElmArray = <HTMLAnchorElement[]>Array.from(anchorElements);
 
   // remove anchors of '戻る' and 'トップへ'

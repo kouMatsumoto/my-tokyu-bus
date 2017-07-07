@@ -1,5 +1,5 @@
-import { fetchSJISHtml } from '../fetch-http/fetch-html';
-import { HttpResult } from '../../types/index';
+import { fetchSJISHtml } from '../../fetch-http/fetch-html';
+import { HttpResult } from '../../../types/index';
 
 // endpoint
 const url = 'http://www.tokyubus.co.jp/keitai/i/index.cgi';

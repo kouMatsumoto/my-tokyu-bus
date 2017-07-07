@@ -1,6 +1,6 @@
 import * as moment from 'moment';
-import { fetchSJISHtml } from '../fetch-http/fetch-html';
-import { TOKYU_BUS_TIMETABLE_URL } from '../../config/constants';
+import { fetchSJISHtml } from '../../fetch-http/fetch-html';
+import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
 
 // endpoint
 const url = TOKYU_BUS_TIMETABLE_URL;
