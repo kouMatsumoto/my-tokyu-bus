@@ -8,11 +8,11 @@
     "npm": ">=4.2.0"
   },
   "scripts": {
-    "develop": "tsc -p ./src/tsconfig.json -w",
-    "lint": "tslint -p ./src/tslint.json",
+    "develop": "tsc -p ./tsconfig.json -w",
+    "lint": "tslint -p ./tslint.json",
     "server": "NODE_ENV=development node ./src/index.js",
-    "build": "tsc -p ./src/production.tsconfig.json",
-    "test": "jasmine-ts --project=src"
+    "build": "tsc -p ./production.tsconfig.json",
+    "test": "jasmine-ts"
   },
   "repository": {
     "type": "git",

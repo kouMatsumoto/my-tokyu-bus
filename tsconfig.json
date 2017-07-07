@@ -9,11 +9,14 @@
     "removeComments": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "typeRoots" : ["../node_modules/@types"],
+    "typeRoots" : [
+      "./node_modules/@types"
+    ],
     "types" : ["node", "jasmine"]
   },
   "include": [
-    "./**/*.ts"
+    "./src/**/*.ts",
+    "./spec/**/*.ts"
   ],
   "exclude": [
     "node_modules"
