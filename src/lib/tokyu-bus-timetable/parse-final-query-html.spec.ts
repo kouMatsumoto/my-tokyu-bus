@@ -3,7 +3,7 @@ import { finalQueryHTMLMock } from './final-query-html.mock';
 
 
 describe('parseFinalQueryHTML', () => {
-  fit('should parse html properly', () => {
+  it('should parse html properly', () => {
     const actual = parseFinalQueryHTML(finalQueryHTMLMock);
     expect(actual).toEqual(expected);
   });
