@@ -11,6 +11,20 @@ import { parseTimetableHtml } from '../../../lib/tokyu-bus-timetable/timetable-h
 import { retrieveFolderAndDispValue } from '../../../lib/tokyu-bus-timetable/folder-and-disp-value-html/retrieve-folder-and-disp-value';
 
 
+/**
+ * Tokyu Bus Timetable
+ *
+ * endpoint
+ *   - http://www.tokyubus.co.jp/keitai/i/index.cgi?
+ * query
+ *   *disp_history - to identify file to refer (2122232425030405)
+ *   *busstop_cd - departure bus-stop number (e.g. 1710409)
+ *   *keito_cd - bus-route type number (e.g. 616101)
+ *   *updown_cd - direction to go. (1 or 2)
+ *   *pole_cd - specify a bus-stop to get-on among same name (e.g. 01, 24)
+ */
+
+
 const _router = new Router();
 
 /**
@@ -93,23 +107,6 @@ _router.get('/', async (ctx) => {
   const httpResultOfTimetable = await fetchTimetableHTML(queryObj);
   // as above, will throw an error when the fetched html is unexpected.
   ctx.body = parseTimetableHtml(httpResultOfTimetable.contents);
-});
-
-
-
-/**
- *
- * endpoint
- *   - http://www.tokyubus.co.jp/keitai/i/index.cgi?
- * query
- *   *disp_history - to identify file to refer (2122232425030405)
- *   *busstop_cd - departure bus-stop number (e.g. 1710409)
- *   *keito_cd - bus-route type number (e.g. 616101)
- *   *updown_cd - direction to go. (1 or 2)
- *   *pole_cd - specify a bus-stop to get-on among same name (e.g. 01, 24)
- */
-_router.get('/', async (ctx) => {
-  ctx.body = '/api/timetable';
 });
 
 
