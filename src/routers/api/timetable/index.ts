@@ -26,6 +26,7 @@ _router.use(async (ctx, next) => {
   }
 });
 
+
 // TODO: use db to store following variables.
 // to retrieve 'folder' and 'disp_history' prerequisite options every day.
 let lastFetchedDay: '';
