@@ -24,6 +24,7 @@ export function parseHTMLByInputHidden(html: string): ParsedResult {
 
   const queryObj: any = {};
   const inputElements = <HTMLInputElement[]>Array.from(inputHiddenNodeList);
-  inputElements.forEach((e) => queryObj[e.name] = e.value);
+  const validInputs = inputElements.filter((e) => e.value !== '');
+  validInputs.forEach((e) => queryObj[e.name] = e.value);
   return <ParsedResult>queryObj;
 }
