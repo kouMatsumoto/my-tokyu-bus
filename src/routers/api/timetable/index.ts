@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import * as Router from 'koa-router';
 import { makeWebApiErrorResultObject } from '../../../lib/make-web-api-error-result-object';
 import { fetchBusStopNameSearchHTML } from '../../../lib/tokyu-bus-timetable/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
@@ -7,6 +8,7 @@ import { fetchFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-quer
 import { parseFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/parse-final-query-html';
 import { fetchTimetableHTML } from '../../../lib/tokyu-bus-timetable/timetable-html/fetch-timetable-html';
 import { parseTimetableHtml } from '../../../lib/tokyu-bus-timetable/timetable-html/parse-timetable-html';
+import { retrieveFolderAndDispValue } from '../../../lib/tokyu-bus-timetable/folder-and-disp-value-html/retrieve-folder-and-disp-value';
 
 
 const _router = new Router();
@@ -22,6 +24,30 @@ _router.use(async (ctx, next) => {
     ctx.status = e.status || 500;
     ctx.body = makeWebApiErrorResultObject(e.message);
   }
+});
+
+// TODO: use db to store following variables.
+// to retrieve 'folder' and 'disp_history' prerequisite options every day.
+let lastFetchedDay: '';
+// required to fetch timetable. (this is parameter for weekday type)
+let folder = '';
+// required to fetch timetable. (this is parameter for timetable version)
+let disp_history = '';
+
+/**
+ * Retrieve prerequisite query values `folder` and `disp_history`.
+ * These can be updated everyday.
+ */
+_router.use(async (_ctx, next) => {
+  const today = moment().format('D');
+  if (today === lastFetchedDay) {
+    return next();
+  }
+
+  const retrieved = await retrieveFolderAndDispValue();
+  folder = retrieved.folder;
+  disp_history = retrieved.disp_history;
+  return next();
 });
 
 
