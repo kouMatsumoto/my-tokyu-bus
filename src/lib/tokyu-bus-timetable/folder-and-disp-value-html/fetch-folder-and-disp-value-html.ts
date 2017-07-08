@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import { fetchSJISHtml } from '../../fetch-http/fetch-html';
-import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
+import { TOKYU_BUS_TIMETABLE_DISP_HISTORY, TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
 
 
 /**
@@ -16,7 +16,7 @@ export function fetchFolderAndDispValueHTML() {
 
   const options = {
     mmdd,
-    disp_history: '1112'
+    disp_history: TOKYU_BUS_TIMETABLE_DISP_HISTORY
   };
 
   return fetchSJISHtml(TOKYU_BUS_TIMETABLE_URL, options);
