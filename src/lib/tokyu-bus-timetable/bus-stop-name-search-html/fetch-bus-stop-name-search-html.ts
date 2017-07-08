@@ -1,12 +1,12 @@
 import * as moment from 'moment';
 import { fetchSJISHtml } from '../../fetch-http/fetch-html';
 import { sjisURLEncode } from '../../sjis-url-encode/sjis-url-encode';
-import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
+import { TOKYU_BUS_TIMETABLE_DISP_HISTORY, TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
 
 // endpoint
 const url = TOKYU_BUS_TIMETABLE_URL;
 // version-number of timetable. (latest from 2017-07-06)
-const disp_history = '111213';
+const disp_history = TOKYU_BUS_TIMETABLE_DISP_HISTORY;
 // unknown query but may be valid if '7'.
 const folder = '7';
 // 'start-with' or 'contain' or 'end-with' (1 or 2 or 3).
