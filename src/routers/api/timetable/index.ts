@@ -57,7 +57,14 @@ _router.use(async (_ctx, next) => {
  */
 _router.get('/busstops', async (ctx) => {
   const search: string = ctx.query['search'];
-  const httpResult = await fetchBusStopNameSearchHTML(search);
+  const mmdd = moment().format('MM/DD');
+
+  const options = {
+    folder,
+    disp_history,
+    mmdd
+  };
+  const httpResult = await fetchBusStopNameSearchHTML(search, options);
   // when busstop not found, result is an empty array [].
   ctx.body = parseHTMLByAnchor(httpResult.contents);
 });
