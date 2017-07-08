@@ -1,11 +1,11 @@
-import { fetchFolderNumberHTML } from './fetch-folder-number-html';
+import { fetchFolderAndDispValueHTML } from './fetch-folder-and-disp-value-html';
 import { useAsync } from '../../../../spec/support/helpers/use-async';
-import { folderNumberHTMLMock } from './folder-number-html.mock';
+import { folderNumberHTMLMock } from './folder-and-disp-value-html.mock';
 
 
-describe('getFolderNumber', () => {
+describe('fetchFolderAndDispValueHTML', () => {
   it('should fetch same length html with mock', useAsync(async () => {
-    const httpResult = await fetchFolderNumberHTML();
+    const httpResult = await fetchFolderAndDispValueHTML();
     const fetchedHTML = httpResult.contents;
 
     expect(fetchedHTML.length).toBe(folderNumberHTMLMock.length);

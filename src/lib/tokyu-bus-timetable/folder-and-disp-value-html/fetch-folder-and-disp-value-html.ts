@@ -11,7 +11,7 @@ import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
  *   - saturday: '8'
  *   - sunday and holiday: '9'
  */
-export function fetchFolderNumberHTML() {
+export function fetchFolderAndDispValueHTML() {
   const mmdd = moment().format('MM/DD');
 
   const options = {
