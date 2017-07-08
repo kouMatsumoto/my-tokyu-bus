@@ -1,7 +1,7 @@
 import * as Router from 'koa-router';
 import { makeWebApiErrorResultObject } from '../../../lib/make-web-api-error-result-object';
 import { fetchBusStopNameSearchHTML } from '../../../lib/tokyu-bus-timetable/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
-import { parseForQueryString } from '../../../lib/tokyu-bus-timetable/parse-for-query-string/parse-for-query-string';
+import { parseHTMLByAnchor } from '../../../lib/tokyu-bus-timetable/parse-html-by-anchor/parse-html-by-anchor';
 import { fetchBusRoutesSelectHTML } from '../../../lib/tokyu-bus-timetable/bus-routes-select-html/fetch-bus-routes-select-html';
 import { fetchFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/fetch-final-query-html';
 import { parseFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/parse-final-query-html';
@@ -32,7 +32,7 @@ _router.get('/busstops', async (ctx) => {
   const search: string = ctx.query['search'];
   const httpResult = await fetchBusStopNameSearchHTML(search);
   // when busstop not found, result is an empty array [].
-  ctx.body = parseForQueryString(httpResult.contents);
+  ctx.body = parseHTMLByAnchor(httpResult.contents);
 });
 
 
@@ -43,7 +43,7 @@ _router.get('/routes', async (ctx) => {
   const queryString: string = ctx.query['query'];
   const httpResult = await fetchBusRoutesSelectHTML(queryString);
   // when bus-routes not found, result is an empty array [].
-  ctx.body = parseForQueryString(httpResult.contents);
+  ctx.body = parseHTMLByAnchor(httpResult.contents);
 });
 
 
