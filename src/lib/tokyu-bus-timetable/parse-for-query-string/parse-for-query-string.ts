@@ -11,7 +11,7 @@ interface ParsedQueryStringObject {
 /**
  * parse a HTML to construct query-string data.
  */
-export function parseForQueryString(html: string) {
+export function parseForQueryString(html: string): ParsedQueryStringObject[] {
   const dom = new JSDOM(html);
   const anchorElements = dom.window.document.querySelectorAll('a');
 
