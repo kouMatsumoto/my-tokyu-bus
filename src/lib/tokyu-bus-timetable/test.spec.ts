@@ -10,7 +10,7 @@ import { parseTimetableHtml } from './timetable-html/parse-timetable-html';
 
 
 describe('total test of tokyu-bus-timetable', () => {
-  it('should conduct my-test', useAsync(async () => {
+  xit('should conduct my-test', useAsync(async () => {
     const html = await fetchBusStopNameSearchHTML('下馬');
     const parsed = parseForQueryString(html.contents);
     const simouma1 = parsed[0];
