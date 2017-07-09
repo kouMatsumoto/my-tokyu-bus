@@ -4,8 +4,8 @@ import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
 
 
 /**
- * fetch next page of name-search page.
+ * fetch a page of final-query.
  */
-export function fetchBusRoutesSelectHTML(queryString: string): Promise<HttpResult> {
+export function fetchFinalQueryHTML(queryString: string): Promise<HttpResult> {
   return fetchSJISHtml(`${TOKYU_BUS_TIMETABLE_URL}?${queryString}`);
 }

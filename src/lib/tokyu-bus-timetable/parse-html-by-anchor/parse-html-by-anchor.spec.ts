@@ -1,4 +1,4 @@
-import { parseForQueryString } from './parse-for-query-string';
+import { parseHTMLByAnchor } from './parse-html-by-anchor';
 import { busStopNameSearchHTMLMockString } from '../bus-stop-name-search-html/bus-stop-name-search-html.mock';
 
 const expected = [
@@ -20,9 +20,9 @@ const expected = [
   }
 ];
 
-describe('parseForQueryString', () => {
+describe('parseHTMLByAnchor', () => {
   it('should parse the html properly', () => {
-    const actual = parseForQueryString(busStopNameSearchHTMLMockString);
+    const actual = parseHTMLByAnchor(busStopNameSearchHTMLMockString);
     expect(actual).toEqual(expected);
   });
 });
