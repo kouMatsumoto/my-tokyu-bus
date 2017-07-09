@@ -1,18 +1,9 @@
-export const BUS_TIMETABLE_RESULT_HTML_TEXT = `<!--
-
-2017-06-23
-This html is get result of url below.
-http://www.tokyubus.co.jp/keitai/i/index.cgi?disp_history=2122232425030405&search_type=&search_str=&page=1&kasira1=%2582%25b3&kasira2=%2582%25b5&kasira3=%2582%25b5%2582%25e0&line_type=&station_cd=&busstop_cd=1710409&keito_cd=612101&updown_cd=2&pole_cd=01&mmdd=06%2F23&folder=4&hh=21&mm=10
-
--->
-
-
-<html><head>
-    <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="-1">
-    <title></title>
+export const timetableHTMLMock = `<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<title></title>
 </head><body>
 
 <center>
