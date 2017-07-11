@@ -12,7 +12,7 @@
     "lint": "tslint -p ./tslint.json",
     "server": "NODE_ENV=development node ./src/index.js",
     "build": "tsc -p ./production.tsconfig.json",
-    "test": "jasmine-ts"
+    "test": "mocha --opts ./mocha.opts src/**/*.spec.js"
   },
   "repository": {
     "type": "git",
