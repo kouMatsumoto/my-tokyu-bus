@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { useAsync } from '../../../../spec/support/helpers/use-async';
 import { retrieveFolderAndDispValue } from './retrieve-folder-and-disp-value';
 

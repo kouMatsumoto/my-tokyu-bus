@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { getQueryString } from './get-query-string';
 
 describe('getQueryString', () => {

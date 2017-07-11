@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import * as moment from 'moment';
 import { parseHTMLByAnchor } from '../parse-html-by-anchor/parse-html-by-anchor';
 import { useAsync } from '../../../../spec/support/helpers/use-async';
