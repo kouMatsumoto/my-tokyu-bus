@@ -1,6 +1,6 @@
 import * as expect from 'expect';
 import { fetchFolderAndDispValueHTML } from './fetch-folder-and-disp-value-html';
-import { useAsync } from '../../../../spec/support/helpers/use-async';
+import { useAsync } from '../../../../spec/helpers/use-async';
 import { folderNumberHTMLMock } from './folder-and-disp-value-html.mock';
 
 
