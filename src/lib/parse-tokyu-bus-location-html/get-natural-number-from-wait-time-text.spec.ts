@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { getNaturalNumberFromWaitTimeText } from './get-natural-number-from-wait-time-text';
 
 

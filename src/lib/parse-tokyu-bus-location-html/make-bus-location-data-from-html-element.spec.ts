@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { makeBusLocationDataFromElement } from './make-bus-location-data-from-html-element';
 import { BusLocationData } from '../../types/bus-location-data';
 

@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { filterFirstWordFromSpaceSeparatedText } from './filter-first-word-from-space-separated-text';
 
 

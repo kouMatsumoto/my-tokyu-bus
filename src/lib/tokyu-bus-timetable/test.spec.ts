@@ -1,5 +1,6 @@
+import * as expect from 'expect';
 import * as moment from 'moment';
-import { useAsync } from '../../../spec/support/helpers/use-async';
+import { useAsync } from '../../../spec/helpers/use-async';
 import { fetchBusStopNameSearchHTML } from './bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { parseHTMLByAnchor } from './parse-html-by-anchor/parse-html-by-anchor';
 import { fetchBusRoutesSelectHTML } from './bus-routes-select-html/fetch-bus-routes-select-html';
@@ -40,6 +41,6 @@ describe('total test of tokyu-bus-timetable', () => {
     const timetableHTTPResult = await fetchTimetableHTML(finalQuery);
     const timetableData = parseTimetableHtml(timetableHTTPResult.contents);
 
-    expect(timetableData.length).toBeGreaterThanOrEqual(1);
+    expect(timetableData.length).toBeGreaterThanOrEqualTo(1);
   }));
 });

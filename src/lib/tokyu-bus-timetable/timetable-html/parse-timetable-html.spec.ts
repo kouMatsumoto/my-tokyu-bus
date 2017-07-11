@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { parseTimetableHtml } from './parse-timetable-html';
 import { timetableHTMLMock } from './timetable.html.mock';
 import { timetableNoPrevHTMLMock } from './timetable-no-prev.html.mock';
