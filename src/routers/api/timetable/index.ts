@@ -2,7 +2,9 @@ import * as moment from 'moment';
 import * as Router from 'koa-router';
 import { makeWebApiErrorResultObject } from '../../../lib/make-web-api-error-result-object';
 import { fetchBusStopNameSearchHTML } from '../../../lib/tokyu-bus-timetable/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
-import { parseHTMLByAnchor } from '../../../lib/tokyu-bus-timetable/parse-html-by-anchor/parse-html-by-anchor';
+import {
+  parseHTMLByAnchor
+} from '../../../lib/tokyu-bus-timetable/parse-html-by-anchor/parse-html-by-anchor';
 import { fetchBusRoutesSelectHTML } from '../../../lib/tokyu-bus-timetable/bus-routes-select-html/fetch-bus-routes-select-html';
 import { fetchFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/fetch-final-query-html';
 import { parseFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/parse-final-query-html';
@@ -73,6 +75,7 @@ _router.get('/busstops', async (ctx) => {
   const search: string = ctx.query['search'];
   const mmdd = moment().format('MM/DD');
 
+  // Todo: refactor into ctx prop
   const options = {
     folder,
     disp_history,
@@ -92,6 +95,55 @@ _router.get('/routes', async (ctx) => {
   const httpResult = await fetchBusRoutesSelectHTML(queryString);
   // when bus-routes not found, result is an empty array [].
   ctx.body = parseHTMLByAnchor(httpResult.contents);
+});
+
+
+/**
+ * Fetch timetable by busstop and busroute
+ */
+_router.get('/:busstop/:busroute', async (ctx) => {
+  const targetBusrouteName = ctx.params['busroute'];
+
+  const busstop: string = ctx.params['busstop'];
+  const mmdd = moment().format('MM/DD');
+
+  // Todo: refactor into ctx prop
+  const options = {
+    folder,
+    disp_history,
+    mmdd
+  };
+
+  // fetch busstops data
+  const httpResultOfBusstops = await fetchBusStopNameSearchHTML(busstop, options);
+  // when busstop not found, result is an empty array [].
+  const busstopsData = parseHTMLByAnchor(httpResultOfBusstops.contents);
+  const busstopData = busstopsData[0];
+  if (!busstopData) {
+    return ctx.throw('Invalid busstop name');
+  }
+
+  // fetch busroutes of this busstop
+  const httpResultOfBusroutes = await fetchBusRoutesSelectHTML(busstopData.queryString);
+  const busroutesData = parseHTMLByAnchor(httpResultOfBusroutes.contents);
+  let busrouteData;
+  for (let v of busroutesData) {
+    if (v.name === targetBusrouteName) {
+      busrouteData = v;
+    }
+  }
+  if (!busrouteData) {
+    return ctx.throw('Invalid busroute name');
+  }
+
+  // fetch timetable
+  const httpResultOfFinalQuery = await fetchFinalQueryHTML(busrouteData.queryString);
+  // will throw an error when the fetched html is unexpected.
+  const queryObj = parseFinalQueryHTML(httpResultOfFinalQuery.contents);
+
+  const httpResultOfTimetable = await fetchTimetableHTML(queryObj);
+  // as above, will throw an error when the fetched html is unexpected.
+  ctx.body = parseTimetableHtml(httpResultOfTimetable.contents);
 });
 
 
