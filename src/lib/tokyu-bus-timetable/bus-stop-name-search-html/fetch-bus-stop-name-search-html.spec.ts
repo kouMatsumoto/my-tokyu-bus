@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import * as moment from 'moment';
 import { fetchBusStopNameSearchHTML } from './fetch-bus-stop-name-search-html';
 import { busStopNameSearchHTMLMockString } from './bus-stop-name-search-html.mock';

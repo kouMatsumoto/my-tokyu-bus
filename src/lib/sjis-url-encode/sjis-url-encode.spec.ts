@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { sjisURLEncode, sjisURLDecode } from './sjis-url-encode';
 
 

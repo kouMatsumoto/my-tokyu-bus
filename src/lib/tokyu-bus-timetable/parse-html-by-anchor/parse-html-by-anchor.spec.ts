@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { parseHTMLByAnchor } from './parse-html-by-anchor';
 import { busStopNameSearchHTMLMockString } from '../bus-stop-name-search-html/bus-stop-name-search-html.mock';
 

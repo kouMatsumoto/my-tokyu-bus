@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { queryParser } from './query-parser';
 
 const testObj1 = {

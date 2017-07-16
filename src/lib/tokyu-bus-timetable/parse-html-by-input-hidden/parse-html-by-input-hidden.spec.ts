@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { parseHTMLByInputHidden } from './parse-html-by-input-hidden';
 import { sampleHTMLMock } from './sample-html.mock';
 

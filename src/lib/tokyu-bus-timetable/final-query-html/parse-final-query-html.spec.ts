@@ -1,3 +1,4 @@
+import * as expect from 'expect';
 import { parseFinalQueryHTML } from './parse-final-query-html';
 import { finalQueryHTMLMock } from './final-query-html.mock';
 
