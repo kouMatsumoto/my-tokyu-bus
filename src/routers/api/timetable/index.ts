@@ -44,12 +44,38 @@ _router.use(async (ctx, next) => {
 
 
 // TODO: use db to store following variables.
-// to retrieve 'folder' and 'disp_history' prerequisite options every day.
+/**
+ * This application retrieves following options everyday. (e.g. folder, disp_history)
+ * This conditions whether options are already retrieved today.
+ *
+ * ex.) 01, 31
+ */
 let lastFetchedDay: '';
-// required to fetch timetable. (this is parameter for weekday type)
+
+/**
+ * Prerequisite option to retrieve data.
+ * This determines weekday type of timetable.
+ *
+ * ex.) 7, 8
+ */
 let folder = '';
-// required to fetch timetable. (this is parameter for timetable version)
+
+/**
+ * Prerequisite option to retrieve data.
+ * This determines timetable version.
+ *
+ * ex.) 1121
+ */
 let disp_history = '';
+
+/**
+ * Prerequisite Option to retrieve data.
+ * This determines date of timetable.
+ *
+ * ex.) 07/01
+ */
+let mmdd = '';
+
 
 /**
  * Retrieve prerequisite query values `folder` and `disp_history`.
@@ -64,6 +90,7 @@ _router.use(async (_ctx, next) => {
   const retrieved = await retrieveFolderAndDispValue();
   folder = retrieved.folder;
   disp_history = retrieved.disp_history;
+  mmdd = moment().format('MM/DD');
   return next();
 });
 
@@ -73,7 +100,6 @@ _router.use(async (_ctx, next) => {
  */
 _router.get('/busstops', async (ctx) => {
   const search: string = ctx.query['search'];
-  const mmdd = moment().format('MM/DD');
 
   // Todo: refactor into ctx prop
   const options = {
@@ -103,9 +129,7 @@ _router.get('/routes', async (ctx) => {
  */
 _router.get('/:busstop/:busroute', async (ctx) => {
   const targetBusrouteName = ctx.params['busroute'];
-
   const busstop: string = ctx.params['busstop'];
-  const mmdd = moment().format('MM/DD');
 
   // Todo: refactor into ctx prop
   const options = {
