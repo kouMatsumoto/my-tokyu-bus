@@ -76,6 +76,12 @@ let disp_history = '';
  */
 let mmdd = '';
 
+let prerequisiteOption: {
+  folder: string;
+  disp_history: string;
+  mmdd: string;
+};
+
 
 /**
  * Retrieve prerequisite query values `folder` and `disp_history`.
@@ -91,6 +97,11 @@ _router.use(async (_ctx, next) => {
   folder = retrieved.folder;
   disp_history = retrieved.disp_history;
   mmdd = moment().format('MM/DD');
+  prerequisiteOption = {
+    folder,
+    disp_history,
+    mmdd,
+  };
   return next();
 });
 
@@ -101,13 +112,7 @@ _router.use(async (_ctx, next) => {
 _router.get('/busstops', async (ctx) => {
   const search: string = ctx.query['search'];
 
-  // Todo: refactor into ctx prop
-  const options = {
-    folder,
-    disp_history,
-    mmdd
-  };
-  const httpResult = await fetchBusStopNameSearchHTML(search, options);
+  const httpResult = await fetchBusStopNameSearchHTML(search, prerequisiteOption);
   // when busstop not found, result is an empty array [].
   ctx.body = parseHTMLByAnchor(httpResult.contents);
 });
@@ -131,15 +136,8 @@ _router.get('/:busstop/:busroute', async (ctx) => {
   const targetBusrouteName = ctx.params['busroute'];
   const busstop: string = ctx.params['busstop'];
 
-  // Todo: refactor into ctx prop
-  const options = {
-    folder,
-    disp_history,
-    mmdd
-  };
-
   // fetch busstops data
-  const httpResultOfBusstops = await fetchBusStopNameSearchHTML(busstop, options);
+  const httpResultOfBusstops = await fetchBusStopNameSearchHTML(busstop, prerequisiteOption);
   // when busstop not found, result is an empty array [].
   const busstopsData = parseHTMLByAnchor(httpResultOfBusstops.contents);
   const busstopData = busstopsData[0];
