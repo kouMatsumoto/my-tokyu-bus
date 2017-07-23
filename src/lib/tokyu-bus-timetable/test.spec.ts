@@ -4,7 +4,7 @@ import { useAsync } from '../../../spec/helpers/use-async';
 import { fetchBusStopNameSearchHTML } from './bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { parseHTMLByAnchor } from './parse-html-by-anchor/parse-html-by-anchor';
 import { fetchBusRoutesSelectHTML } from './bus-routes-select-html/fetch-bus-routes-select-html';
-import { fetchSJISHtml } from '../fetch-http/fetch-html';
+import { fetchSJISHtml } from '../common/http/fetch-sjis-html';
 import { TOKYU_BUS_TIMETABLE_URL } from '../../config/constants';
 import { parseFinalQueryHTML } from './final-query-html/parse-final-query-html';
 import { fetchTimetableHTML } from './timetable-html/fetch-timetable-html';
