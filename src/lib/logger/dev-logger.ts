@@ -1,9 +1,9 @@
 import * as winston from 'winston';
 import { join } from 'path';
-import { LOG_ROOT } from '../config/index';
+import { LOG_ROOT } from '../../config/index';
 
 
-export const logger = new (winston.Logger)({
+export const devLogger = new (winston.Logger)({
   level: 'silly',
   transports: [
     new winston.transports.Console({
