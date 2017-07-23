@@ -1,5 +1,5 @@
 import { fetchSJISHtml } from '../../common/http/fetch-sjis-html';
-import { sjisURLEncode } from '../../sjis-url-encode/sjis-url-encode';
+import { sjisURLEncode } from '../../common/encode/sjis-url-encode';
 import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
 
 
