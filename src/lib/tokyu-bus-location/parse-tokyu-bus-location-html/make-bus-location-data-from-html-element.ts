@@ -1,5 +1,5 @@
-import { NEEDLE_TO_WAIT_TIME_ELM } from '../../config/constants';
-import { BusLocationData } from '../../types/bus-location-data';
+import { NEEDLE_TO_WAIT_TIME_ELM } from '../../../config/constants';
+import { BusLocationData } from '../../../types/bus-location-data';
 import { getNaturalNumberFromWaitTimeText } from './get-natural-number-from-wait-time-text';
 import { filterFirstWordFromSpaceSeparatedText } from './filter-first-word-from-space-separated-text';
 
