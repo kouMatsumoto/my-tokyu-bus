@@ -1,4 +1,4 @@
-import { getQueryString } from '../../get-query-string/get-query-string';
+import { getQueryString } from '../../common/string-parser/get-query-string';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
