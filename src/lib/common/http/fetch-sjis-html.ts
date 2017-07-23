@@ -1,5 +1,5 @@
 import { HttpResult } from '../../../types/index';
-import { queryParser } from '../../fetch-http/query-parser';
+import { queryParser } from './query-parser';
 import * as http from 'http';
 
 const jconv = require('jconv');
