@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import * as Router from 'koa-router';
-import { makeWebApiErrorResultObject } from '../../../lib/make-web-api-error-result-object';
+import { makeWebApiErrorResultObject } from '../../../lib/api-response/make-web-api-error-result-object';
 import { fetchBusStopNameSearchHTML } from '../../../lib/tokyu-bus-timetable/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import {
   parseHTMLByAnchor

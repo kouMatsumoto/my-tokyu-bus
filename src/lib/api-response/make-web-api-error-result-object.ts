@@ -1,4 +1,4 @@
-import { WebApiErrorResult } from '../types/index';
+import { WebApiErrorResult } from '../../types/index';
 
 
 export function makeWebApiErrorResultObject(message: string): WebApiErrorResult {
