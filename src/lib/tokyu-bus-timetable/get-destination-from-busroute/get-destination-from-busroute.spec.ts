@@ -2,7 +2,7 @@ import * as expect from 'expect';
 import { getDestinationFromBusroute } from './get-destination-from-busroute';
 
 
-describe.only('getDestinationFromBusroute', () => {
+describe('getDestinationFromBusroute', () => {
   it('should scrape 【】', () => {
     const route = '【循環】野沢龍雲寺';
     const expected = '野沢龍雲寺';
