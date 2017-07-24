@@ -1,7 +1,5 @@
-import * as moment from 'moment';
 import * as Router from 'koa-router';
 import { makeWebApiErrorResultObject } from '../../../lib/api-response/make-web-api-error-result-object';
-import { fetchBusStopNameSearchHTML } from '../../../lib/tokyu-bus-timetable/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import {
   parseHTMLByAnchor
 } from '../../../lib/tokyu-bus-timetable/parse-html-by-anchor/parse-html-by-anchor';
@@ -10,7 +8,7 @@ import { fetchFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-quer
 import { parseFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/parse-final-query-html';
 import { fetchTimetableHTML } from '../../../lib/tokyu-bus-timetable/timetable-html/fetch-timetable-html';
 import { parseTimetableHtml } from '../../../lib/tokyu-bus-timetable/timetable-html/parse-timetable-html';
-import { retrieveFolderAndDispValue } from '../../../lib/tokyu-bus-timetable/folder-and-disp-value-html/retrieve-folder-and-disp-value';
+import { searchBusstopByWord } from '../../../lib/tokyu-bus-timetable/search-busstop-by-word/search-busstop-by-word';
 
 
 /**
@@ -43,78 +41,12 @@ _router.use(async (ctx, next) => {
 });
 
 
-// TODO: use db to store following variables.
-/**
- * This application retrieves following options everyday. (e.g. folder, disp_history)
- * This conditions whether options are already retrieved today.
- *
- * ex.) 01, 31
- */
-let lastFetchedDay: '';
-
-/**
- * Prerequisite option to retrieve data.
- * This determines weekday type of timetable.
- *
- * ex.) 7, 8
- */
-let folder = '';
-
-/**
- * Prerequisite option to retrieve data.
- * This determines timetable version.
- *
- * ex.) 1121
- */
-let disp_history = '';
-
-/**
- * Prerequisite Option to retrieve data.
- * This determines date of timetable.
- *
- * ex.) 07/01
- */
-let mmdd = '';
-
-let prerequisiteOption: {
-  folder: string;
-  disp_history: string;
-  mmdd: string;
-};
-
-
-/**
- * Retrieve prerequisite query values `folder` and `disp_history`.
- * These can be updated everyday.
- */
-_router.use(async (_ctx, next) => {
-  const today = moment().format('D');
-  if (today === lastFetchedDay) {
-    return next();
-  }
-
-  const retrieved = await retrieveFolderAndDispValue();
-  folder = retrieved.folder;
-  disp_history = retrieved.disp_history;
-  mmdd = moment().format('MM/DD');
-  prerequisiteOption = {
-    folder,
-    disp_history,
-    mmdd,
-  };
-  return next();
-});
-
-
 /**
  * First api to search busstop-name by a inputted word.
  */
 _router.get('/busstops', async (ctx) => {
   const search: string = ctx.query['search'];
-
-  const httpResult = await fetchBusStopNameSearchHTML(search, prerequisiteOption);
-  // when busstop not found, result is an empty array [].
-  ctx.body = parseHTMLByAnchor(httpResult.contents);
+  ctx.body = await searchBusstopByWord(search);
 });
 
 
@@ -137,9 +69,7 @@ _router.get('/:busstop/:busroute', async (ctx) => {
   const busstop: string = ctx.params['busstop'];
 
   // fetch busstops data
-  const httpResultOfBusstops = await fetchBusStopNameSearchHTML(busstop, prerequisiteOption);
-  // when busstop not found, result is an empty array [].
-  const busstopsData = parseHTMLByAnchor(httpResultOfBusstops.contents);
+  const busstopsData = await searchBusstopByWord(busstop);
   const busstopData = busstopsData[0];
   if (!busstopData) {
     return ctx.throw('Invalid busstop name');
