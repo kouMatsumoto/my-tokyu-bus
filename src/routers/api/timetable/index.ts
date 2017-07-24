@@ -1,14 +1,11 @@
 import * as Router from 'koa-router';
 import { makeWebApiErrorResultObject } from '../../../lib/api-response/make-web-api-error-result-object';
-import {
-  parseHTMLByAnchor
-} from '../../../lib/tokyu-bus-timetable/parse-html-by-anchor/parse-html-by-anchor';
-import { fetchBusRoutesSelectHTML } from '../../../lib/tokyu-bus-timetable/bus-routes-select-html/fetch-bus-routes-select-html';
 import { fetchFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/fetch-final-query-html';
 import { parseFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/parse-final-query-html';
 import { fetchTimetableHTML } from '../../../lib/tokyu-bus-timetable/timetable-html/fetch-timetable-html';
 import { parseTimetableHtml } from '../../../lib/tokyu-bus-timetable/timetable-html/parse-timetable-html';
 import { searchBusstopByWord } from '../../../lib/tokyu-bus-timetable/search-busstop-by-word/search-busstop-by-word';
+import { fetchBusroutesByQuery } from '../../../lib/tokyu-bus-timetable/fetch-busroutes-by-query/fetch-busroutes-by-query';
 
 
 /**
@@ -55,9 +52,7 @@ _router.get('/busstops', async (ctx) => {
  */
 _router.get('/routes', async (ctx) => {
   const queryString: string = ctx.query['query'];
-  const httpResult = await fetchBusRoutesSelectHTML(queryString);
-  // when bus-routes not found, result is an empty array [].
-  ctx.body = parseHTMLByAnchor(httpResult.contents);
+  ctx.body = await fetchBusroutesByQuery(queryString);
 });
 
 
@@ -76,8 +71,7 @@ _router.get('/:busstop/:busroute', async (ctx) => {
   }
 
   // fetch busroutes of this busstop
-  const httpResultOfBusroutes = await fetchBusRoutesSelectHTML(busstopData.queryString);
-  const busroutesData = parseHTMLByAnchor(httpResultOfBusroutes.contents);
+  const busroutesData = await fetchBusroutesByQuery(busstopData.queryString);
   let busrouteData;
   for (let v of busroutesData) {
     if (v.name === targetBusrouteName) {
