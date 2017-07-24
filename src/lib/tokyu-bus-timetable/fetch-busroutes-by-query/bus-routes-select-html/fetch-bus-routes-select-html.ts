@@ -1,6 +1,6 @@
-import { fetchSJISHtml } from '../../common/http/fetch-sjis-html';
-import { HttpResult } from '../../../types/index';
-import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
+import { fetchSJISHtml } from '../../../common/http/fetch-sjis-html';
+import { HttpResult } from '../../../../types/index';
+import { TOKYU_BUS_TIMETABLE_URL } from '../../../../config/constants';
 
 
 /**

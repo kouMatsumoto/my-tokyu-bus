@@ -1,11 +1,11 @@
 import * as expect from 'expect';
 import * as moment from 'moment';
-import { parseHTMLByAnchor } from '../parse-html-by-anchor/parse-html-by-anchor';
-import { useAsync } from '../../../../spec/helpers/use-async';
-import { fetchBusStopNameSearchHTML } from '../search-busstop-by-word/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
+import { parseHTMLByAnchor } from '../../parse-html-by-anchor/parse-html-by-anchor';
+import { useAsync } from '../../../../../spec/helpers/use-async';
+import { fetchBusStopNameSearchHTML } from '../../search-busstop-by-word/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { fetchBusRoutesSelectHTML } from './fetch-bus-routes-select-html';
 import { busRoutesSelectHTML } from './bus-routes-select-html.mock';
-import { retrieveFolderAndDispValue } from '../search-busstop-by-word/fetch-prerequisite-options/folder-and-disp-value-html/retrieve-folder-and-disp-value';
+import { retrieveFolderAndDispValue } from '../../search-busstop-by-word/fetch-prerequisite-options/folder-and-disp-value-html/retrieve-folder-and-disp-value';
 
 
 describe('fetchBusRoutesSelectHTML', () => {

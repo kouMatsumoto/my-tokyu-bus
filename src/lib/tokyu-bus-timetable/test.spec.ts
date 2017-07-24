@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { useAsync } from '../../../spec/helpers/use-async';
 import { fetchBusStopNameSearchHTML } from './search-busstop-by-word/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { parseHTMLByAnchor } from './parse-html-by-anchor/parse-html-by-anchor';
-import { fetchBusRoutesSelectHTML } from './bus-routes-select-html/fetch-bus-routes-select-html';
+import { fetchBusRoutesSelectHTML } from './fetch-busroutes-by-query/bus-routes-select-html/fetch-bus-routes-select-html';
 import { fetchSJISHtml } from '../common/http/fetch-sjis-html';
 import { TOKYU_BUS_TIMETABLE_URL } from '../../config/constants';
 import { parseFinalQueryHTML } from './final-query-html/parse-final-query-html';

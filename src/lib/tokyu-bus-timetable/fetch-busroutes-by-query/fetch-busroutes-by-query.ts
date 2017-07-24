@@ -1,5 +1,5 @@
 import { parseHTMLByAnchor } from '../parse-html-by-anchor/parse-html-by-anchor';
-import { fetchBusRoutesSelectHTML } from '../bus-routes-select-html/fetch-bus-routes-select-html';
+import { fetchBusRoutesSelectHTML } from './bus-routes-select-html/fetch-bus-routes-select-html';
 
 
 export async function fetchBusroutesByQuery(queryString: string) {
