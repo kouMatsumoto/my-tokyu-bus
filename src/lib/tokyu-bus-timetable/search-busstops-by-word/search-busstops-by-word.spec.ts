@@ -1,5 +1,5 @@
 import * as expect from 'expect';
-import { searchBusstopByWord } from './search-busstop-by-word';
+import { searchBusstopByWord } from './search-busstops-by-word';
 import { useAsync } from '../../../../spec/helpers/use-async';
 
 

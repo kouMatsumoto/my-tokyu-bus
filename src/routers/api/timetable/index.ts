@@ -4,7 +4,7 @@ import { fetchFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-quer
 import { parseFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/parse-final-query-html';
 import { fetchTimetableHTML } from '../../../lib/tokyu-bus-timetable/timetable-html/fetch-timetable-html';
 import { parseTimetableHtml } from '../../../lib/tokyu-bus-timetable/timetable-html/parse-timetable-html';
-import { searchBusstopByWord } from '../../../lib/tokyu-bus-timetable/search-busstop-by-word/search-busstop-by-word';
+import { searchBusstopByWord } from '../../../lib/tokyu-bus-timetable/search-busstops-by-word/search-busstops-by-word';
 import { fetchBusroutesByQuery } from '../../../lib/tokyu-bus-timetable/fetch-busroutes-by-query/fetch-busroutes-by-query';
 
 
