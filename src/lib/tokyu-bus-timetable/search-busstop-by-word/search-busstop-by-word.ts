@@ -1,6 +1,6 @@
-import { fetchBusStopNameSearchHTML } from '../bus-stop-name-search-html/fetch-bus-stop-name-search-html';
+import { fetchBusStopNameSearchHTML } from './bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { parseHTMLByAnchor } from '../parse-html-by-anchor/parse-html-by-anchor';
-import { fetchPrerequisiteOptions } from '../fetch-prerequisite-options/fetch-prerequisite-options';
+import { fetchPrerequisiteOptions } from './fetch-prerequisite-options/fetch-prerequisite-options';
 
 
 export async function searchBusstopByWord(word: string) {

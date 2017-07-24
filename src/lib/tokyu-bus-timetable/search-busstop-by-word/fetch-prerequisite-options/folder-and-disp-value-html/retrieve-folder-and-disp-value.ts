@@ -1,5 +1,5 @@
 import { fetchFolderAndDispValueHTML } from './fetch-folder-and-disp-value-html';
-import { parseHTMLByInputHidden } from '../parse-html-by-input-hidden/parse-html-by-input-hidden';
+import { parseHTMLByInputHidden } from '../../../parse-html-by-input-hidden/parse-html-by-input-hidden';
 
 
 interface FolderAndDispValue {

@@ -1,7 +1,7 @@
 import * as expect from 'expect';
 import * as moment from 'moment';
 import { useAsync } from '../../../spec/helpers/use-async';
-import { fetchBusStopNameSearchHTML } from './bus-stop-name-search-html/fetch-bus-stop-name-search-html';
+import { fetchBusStopNameSearchHTML } from './search-busstop-by-word/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { parseHTMLByAnchor } from './parse-html-by-anchor/parse-html-by-anchor';
 import { fetchBusRoutesSelectHTML } from './bus-routes-select-html/fetch-bus-routes-select-html';
 import { fetchSJISHtml } from '../common/http/fetch-sjis-html';
@@ -9,7 +9,7 @@ import { TOKYU_BUS_TIMETABLE_URL } from '../../config/constants';
 import { parseFinalQueryHTML } from './final-query-html/parse-final-query-html';
 import { fetchTimetableHTML } from './timetable-html/fetch-timetable-html';
 import { parseTimetableHtml } from './timetable-html/parse-timetable-html';
-import { retrieveFolderAndDispValue } from './folder-and-disp-value-html/retrieve-folder-and-disp-value';
+import { retrieveFolderAndDispValue } from './search-busstop-by-word/fetch-prerequisite-options/folder-and-disp-value-html/retrieve-folder-and-disp-value';
 
 
 describe('total test of tokyu-bus-timetable', () => {

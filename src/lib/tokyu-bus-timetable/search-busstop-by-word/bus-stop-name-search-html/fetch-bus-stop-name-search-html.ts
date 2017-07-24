@@ -1,6 +1,6 @@
-import { fetchSJISHtml } from '../../common/http/fetch-sjis-html';
-import { sjisURLEncode } from '../../common/encode/sjis-url-encode';
-import { TOKYU_BUS_TIMETABLE_URL } from '../../../config/constants';
+import { fetchSJISHtml } from '../../../common/http/fetch-sjis-html';
+import { sjisURLEncode } from '../../../common/encode/sjis-url-encode';
+import { TOKYU_BUS_TIMETABLE_URL } from '../../../../config/constants';
 
 
 // 'start-with' or 'contain' or 'end-with' (1 or 2 or 3).

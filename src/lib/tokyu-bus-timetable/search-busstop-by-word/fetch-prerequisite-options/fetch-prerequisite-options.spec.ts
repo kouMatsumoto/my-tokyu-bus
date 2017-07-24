@@ -1,6 +1,6 @@
 import * as expect from 'expect';
 import * as moment from 'moment';
-import { useAsync } from '../../../../spec/helpers/use-async';
+import { useAsync } from '../../../../../spec/helpers/use-async';
 import { fetchPrerequisiteOptions } from './fetch-prerequisite-options';
 
 

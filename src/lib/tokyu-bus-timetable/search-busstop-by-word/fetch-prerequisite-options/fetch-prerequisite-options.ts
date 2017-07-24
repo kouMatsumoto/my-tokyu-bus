@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { retrieveFolderAndDispValue } from '../folder-and-disp-value-html/retrieve-folder-and-disp-value';
+import { retrieveFolderAndDispValue } from './folder-and-disp-value-html/retrieve-folder-and-disp-value';
 
 /**
  * This application retrieves following options everyday. (e.g. folder, disp_history)

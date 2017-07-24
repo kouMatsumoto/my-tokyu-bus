@@ -2,7 +2,7 @@ import * as expect from 'expect';
 import * as moment from 'moment';
 import { fetchBusStopNameSearchHTML } from './fetch-bus-stop-name-search-html';
 import { busStopNameSearchHTMLMockString } from './bus-stop-name-search-html.mock';
-import { retrieveFolderAndDispValue } from '../folder-and-disp-value-html/retrieve-folder-and-disp-value';
+import { retrieveFolderAndDispValue } from '../fetch-prerequisite-options/folder-and-disp-value-html/retrieve-folder-and-disp-value';
 
 
 describe('fetchBusStopNameSearchHTML', () => {
