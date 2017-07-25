@@ -5,7 +5,7 @@ import * as kcors from 'kcors';
 import { rootRouter } from './routers';
 import { PUBLIC_ROOT } from './config/index';
 import { processTimeLogger } from './middlewares/process-time-logger';
-import { logger } from './lib/logger';
+import { devLogger } from './lib/logger/dev-logger';
 
 const app = new Koa();
 
@@ -29,4 +29,4 @@ app.use(processTimeLogger);
 app.use(rootRouter.routes());
 
 
-app.listen(3000, () => logger.info('server has started', process.env));
+app.listen(3000, () => devLogger.info('server has started', process.env));
