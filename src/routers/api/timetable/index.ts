@@ -1,11 +1,8 @@
 import * as Router from 'koa-router';
 import { makeWebApiErrorResultObject } from '../../../lib/api-response/make-web-api-error-result-object';
-import { fetchFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/fetch-final-query-html';
-import { parseFinalQueryHTML } from '../../../lib/tokyu-bus-timetable/final-query-html/parse-final-query-html';
-import { fetchTimetableHTML } from '../../../lib/tokyu-bus-timetable/timetable-html/fetch-timetable-html';
-import { parseTimetableHtml } from '../../../lib/tokyu-bus-timetable/timetable-html/parse-timetable-html';
 import { searchBusstopByWord } from '../../../lib/tokyu-bus-timetable/search-busstops-by-word/search-busstops-by-word';
 import { fetchBusroutesByQuery } from '../../../lib/tokyu-bus-timetable/fetch-busroutes-by-query/fetch-busroutes-by-query';
+import { fetchTimetableByQuery } from '../../../lib/tokyu-bus-timetable/fetch-timetable-by-query/fetch-timetable-by-query';
 
 
 /**
@@ -83,13 +80,7 @@ _router.get('/:busstop/:busroute', async (ctx) => {
   }
 
   // fetch timetable
-  const httpResultOfFinalQuery = await fetchFinalQueryHTML(busrouteData.queryString);
-  // will throw an error when the fetched html is unexpected.
-  const queryObj = parseFinalQueryHTML(httpResultOfFinalQuery.contents);
-
-  const httpResultOfTimetable = await fetchTimetableHTML(queryObj);
-  // as above, will throw an error when the fetched html is unexpected.
-  ctx.body = parseTimetableHtml(httpResultOfTimetable.contents);
+  ctx.body = await fetchTimetableByQuery(busrouteData.queryString);
 });
 
 
@@ -98,13 +89,7 @@ _router.get('/:busstop/:busroute', async (ctx) => {
  */
 _router.get('/', async (ctx) => {
   const queryString: string = ctx.query['query'];
-  const httpResultOfFinalQuery = await fetchFinalQueryHTML(queryString);
-  // will throw an error when the fetched html is unexpected.
-  const queryObj = parseFinalQueryHTML(httpResultOfFinalQuery.contents);
-
-  const httpResultOfTimetable = await fetchTimetableHTML(queryObj);
-  // as above, will throw an error when the fetched html is unexpected.
-  ctx.body = parseTimetableHtml(httpResultOfTimetable.contents);
+  ctx.body = await fetchTimetableByQuery(queryString);
 });
 
 
