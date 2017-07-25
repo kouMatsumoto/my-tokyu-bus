@@ -1,4 +1,4 @@
-import { NEEDLE_TO_MAIN_CONTENT_ELM_OM_TIMETABLE } from '../../../config/constants';
+import { NEEDLE_TO_MAIN_CONTENT_ELM_OM_TIMETABLE } from '../../../../config/constants';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 

@@ -6,9 +6,9 @@ import { parseHTMLByAnchor } from './parse-html-by-anchor/parse-html-by-anchor';
 import { fetchBusRoutesSelectHTML } from './fetch-busroutes-by-query/bus-routes-select-html/fetch-bus-routes-select-html';
 import { fetchSJISHtml } from '../common/http/fetch-sjis-html';
 import { TOKYU_BUS_TIMETABLE_URL } from '../../config/constants';
-import { parseFinalQueryHTML } from './final-query-html/parse-final-query-html';
-import { fetchTimetableHTML } from './timetable-html/fetch-timetable-html';
-import { parseTimetableHtml } from './timetable-html/parse-timetable-html';
+import { parseFinalQueryHTML } from './fetch-timetable-by-query/final-query-html/parse-final-query-html';
+import { fetchTimetableHTML } from './fetch-timetable-by-query/timetable-html/fetch-timetable-html';
+import { parseTimetableHtml } from './fetch-timetable-by-query/timetable-html/parse-timetable-html';
 import { retrieveFolderAndDispValue } from './search-busstops-by-word/fetch-prerequisite-options/folder-and-disp-value-html/retrieve-folder-and-disp-value';
 
 
