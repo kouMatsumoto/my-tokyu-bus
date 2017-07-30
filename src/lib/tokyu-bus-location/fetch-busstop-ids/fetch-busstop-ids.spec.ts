@@ -5,7 +5,7 @@ import * as expect from 'expect';
 
 describe('fetchBusstopIds', () => {
   it('should fetch html without errors', useAsync(async () => {
-    const actual = await fetchBusstopIds('下馬一丁目', '中目黒');
+    const actual = await fetchBusstopIds('大鳥神社', '渋谷');
     expect(actual).toBeTruthy();
   }));
 });

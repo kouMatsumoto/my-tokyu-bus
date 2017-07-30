@@ -1,4 +1,5 @@
 import { fetchHtml } from '../../common/http/fetch-html';
+import { parseBusstopIdsHTML } from './parse-busstop-ids-html/parse-busstop-ids-html';
 const url = 'http://tokyu.bus-location.jp/blsys/navi';
 
 /**
@@ -28,6 +29,6 @@ export async function fetchBusstopIds(departure: string, destination: string) {
     'DSN': encodeURIComponent(departure),
     'ASN': encodeURIComponent(destination),
   };
-  const fetched = await fetchHtml(url, options);
-  return fetched;
+  const httpResult = await fetchHtml(url, options);
+  return parseBusstopIdsHTML(httpResult.contents);
 }
