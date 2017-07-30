@@ -10,7 +10,7 @@ const url = 'http://tokyu.bus-location.jp/blsys/navi';
 const prerequisiteOptions = {
   'VID': 'ssp',
   'EID': 'nt',
-  'SCT': '2'
+  'SCT': '2',
 };
 
 export async function fetchBusstopIds(departure: string, destination: string) {
@@ -22,10 +22,11 @@ export async function fetchBusstopIds(departure: string, destination: string) {
     throw new Error('departure must have more than 2 characters.');
   }
 
+  // departure and destination have to be URLEncoded. (or error occurs)
   const options = {
     ...prerequisiteOptions,
-    'DSN': departure,
-    'ASN': destination,
+    'DSN': encodeURIComponent(departure),
+    'ASN': encodeURIComponent(destination),
   };
   const fetched = await fetchHtml(url, options);
   return fetched;
