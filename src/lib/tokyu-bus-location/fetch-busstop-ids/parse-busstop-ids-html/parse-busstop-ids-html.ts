@@ -34,11 +34,11 @@ export function parseBusstopIdsHTML(html: string): ParseBusstopIdsResult {
   const arrivalOptionsElms = <HTMLOptionElement[]>Array.from(arrivalSelectElm.options);
 
   const departuresData: ParsedOptionData[] = departureOptionsElms.map((elm) => ({
-    text: elm.textContent || '',
+    text: (elm.textContent && elm.textContent.trim()) || '',
     value: elm.value
   }));
   const arrivalsData: ParsedOptionData[] = arrivalOptionsElms.map((elm) => ({
-    text: elm.textContent || '',
+    text: (elm.textContent && elm.textContent.trim()) || '',
     value: elm.value
   }));
 
