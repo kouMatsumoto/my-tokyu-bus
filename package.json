@@ -30,9 +30,9 @@
     "jconv": "^0.1.5",
     "jsdom": "^10.1.0",
     "kcors": "^2.2.1",
-    "koa": "^2.2.0",
+    "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
-    "koa-router": "^7.1.1",
+    "koa-router": "^7.2.1",
     "koa-static": "^3.0.0",
     "moment": "^2.18.1",
     "winston": "^2.3.1"
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@types/encoding-japanese": "^1.0.15",
     "@types/expect": "^1.20.1",
-    "@types/jsdom": "^2.0.30",
+    "@types/jsdom": "^2.0.32",
     "@types/kcors": "^2.2.1",
     "@types/koa": "^2.0.39",
     "@types/koa-bodyparser": "^3.0.23",
@@ -48,11 +48,12 @@
     "@types/koa-static": "^2.0.22",
     "@types/mocha": "^2.2.41",
     "@types/moment": "^2.13.0",
-    "@types/winston": "^2.3.1",
+    "@types/winston": "^2.3.4",
     "expect": "^1.20.2",
     "mkdirp": "^0.5.1",
-    "mocha": "^3.4.2",
-    "tslint": "^5.1.0",
-    "typescript": "^2.3.2"
+    "mocha": "^3.5.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2"
   }
 }

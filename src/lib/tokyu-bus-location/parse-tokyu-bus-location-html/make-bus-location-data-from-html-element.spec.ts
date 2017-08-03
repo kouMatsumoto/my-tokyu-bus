@@ -25,7 +25,7 @@ describe('makeBusLocationDataFromElement', () => {
     const actual = makeBusLocationDataFromElement(elm1);
     const expected: BusLocationData = {
       destination: '野沢龍行',
-      waitTimes: 5
+      waitTime: 5
     };
     expect(actual).toEqual(expected);
   });
