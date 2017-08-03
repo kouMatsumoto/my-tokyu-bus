@@ -14,9 +14,9 @@ const rowCount = 6;
  * Parse html of tokyu-bus-navi
  *
  * @param html {string} - fetched html of http://tokyu.bus-location.jp/blsys/navi
- * @returns {TokyuBusInformation[]}
+ * @returns {BusLocationData[]}
  */
-export function parseBusLocationHTML(html: string) {
+export function parseBusLocationHTML(html: string): BusLocationData[] {
   const dom = new JSDOM(html);
 
   const mainTableElm = dom.window.document.querySelector(mainTableSelector);

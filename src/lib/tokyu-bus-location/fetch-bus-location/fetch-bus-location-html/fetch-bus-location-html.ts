@@ -8,7 +8,7 @@ const essentialParams = {
 };
 
 
-export async function fetchBusLocationHTML(departureId: string, arrivalId: string) {
+export async function fetchBusLocationHTML(departureId: string, arrivalId: string): Promise<string> {
   const params = {
     ...essentialParams,
     DSMK: departureId,
