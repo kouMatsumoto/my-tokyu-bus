@@ -28,6 +28,6 @@ export function makeBusLocationDataFromElement(elm: HTMLElement): BusLocationDat
 
   return {
     destination,
-    waitTimes
+    waitTime: waitTimes
   };
 }

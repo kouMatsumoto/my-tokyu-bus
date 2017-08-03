@@ -1,6 +1,5 @@
 export interface BusLocationData {
-  currentLocation?: string; // not implemented
-  destination: string;
+  destination?: string;
   remainingStops?: number; // not implemented
-  waitTimes: number;
+  waitTime: number;
 }

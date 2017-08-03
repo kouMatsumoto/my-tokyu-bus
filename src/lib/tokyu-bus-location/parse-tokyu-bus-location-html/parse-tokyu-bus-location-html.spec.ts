@@ -7,19 +7,19 @@ import { BusLocationData } from '../../../types/bus-location-data';
 const expected: BusLocationData[] = [
   {
     destination: '野沢龍行',
-    waitTimes: 14
+    waitTime: 14
   },
   {
     destination: '野沢龍行',
-    waitTimes: 5
+    waitTime: 5
   },
   {
     destination: '野沢龍行',
-    waitTimes: 0
+    waitTime: 0
   },
   {
     destination: '渋谷駅行',
-    waitTimes: 6
+    waitTime: 6
   },
 ];
 
