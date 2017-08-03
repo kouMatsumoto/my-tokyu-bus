@@ -4,7 +4,7 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 interface BusLocationData {
-  name: string;
+  routeName: string;
   waitTime: number;
   remainingStops: number;
 }

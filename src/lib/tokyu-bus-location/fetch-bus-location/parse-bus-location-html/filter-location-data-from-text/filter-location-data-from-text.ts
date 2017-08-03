@@ -1,5 +1,5 @@
 interface FilteredData {
-  name: string;
+  routeName: string;
   waitTime: number;
 }
 
@@ -30,7 +30,7 @@ export function filterLocationDataFromText(textContentOfHTMLElement: string | nu
   }
 
   return {
-    name: matchResult[1],
+    routeName: matchResult[1],
     waitTime: parseInt(matchResult[2]),
   };
 }
