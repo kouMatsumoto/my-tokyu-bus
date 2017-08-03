@@ -1,13 +1,8 @@
 import { filterLocationDataFromText } from './filter-location-data-from-text/filter-location-data-from-text';
+import { BusLocationData } from '../../../../types/bus-location-data';
 
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-
-interface BusLocationData {
-  routeName: string;
-  waitTime: number;
-  remainingStops: number;
-}
 
 const mainTableSelector = 'table.sekkinListTbl';
 const evenTrSelector = '.trEven';
