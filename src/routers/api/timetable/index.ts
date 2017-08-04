@@ -1,5 +1,4 @@
 import * as Router from 'koa-router';
-import { makeWebApiErrorResultObject } from '../../../lib/api-response/make-web-api-error-result-object';
 import { searchBusstopByWord } from '../../../lib/tokyu-bus-timetable/search-busstops-by-word/search-busstops-by-word';
 import { fetchBusroutesByQuery } from '../../../lib/tokyu-bus-timetable/fetch-busroutes-by-query/fetch-busroutes-by-query';
 import { fetchTimetableByQuery } from '../../../lib/tokyu-bus-timetable/fetch-timetable-by-query/fetch-timetable-by-query';
@@ -20,19 +19,6 @@ import { fetchTimetableByQuery } from '../../../lib/tokyu-bus-timetable/fetch-ti
 
 
 const _router = new Router();
-
-/**
- * Error handling for this router
- * it's better move this error handling to global router
- */
-_router.use(async (ctx, next) => {
-  try {
-    await next();
-  } catch (e) {
-    ctx.status = e.status || 500;
-    ctx.body = makeWebApiErrorResultObject(e.message);
-  }
-});
 
 
 /**

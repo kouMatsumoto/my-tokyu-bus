@@ -5,7 +5,7 @@
 #
 - name: Install essential packages
   sudo: yes
-  yum:
+  apt:
     name: '{{ item }}'
     state: latest
     update_cache: yes
