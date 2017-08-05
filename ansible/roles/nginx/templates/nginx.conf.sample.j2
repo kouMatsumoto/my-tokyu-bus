@@ -28,8 +28,8 @@ http {
     default_type        application/octet-stream;
 
     server {
-        listen       80 default_server;
-        listen       [::]:80 default_server;
+        listen       80;
+        listen       [::]:80 ipv6only=on;
         server_name  _;
         root         /usr/share/nginx/html;
 
