@@ -10,5 +10,6 @@
     state: latest
     update_cache: yes
   with_items:
-    - epel-release
+    #  error in debian 7
+    #  - epel-release
     - git
