@@ -1,16 +1,16 @@
 ---
 # tasks about locale_gen and locale for Japanese
 
-- name: add locale_gen
+- name: Add locales
   sudo: yes
-  command: 'locale-gen {{ item }}'
+  command: 'localedef -c -i {{ item }} -f UTF-8 {{ item }}.UTF-8'
   with_items:
-    - en_US.utf8
-    - ja_JP.utf8
+    - en_US
+    - ja_JP
 
-- name: update locale
+- name: Update locale settings
   sudo: yes
-  command: 'update-locale {{ item }}'
+  command: 'localectl set-locale {{ item }}'
   with_items:
     - LANG=en_US.UTF-8
     - LANGUAGE=en_US.UTF-8

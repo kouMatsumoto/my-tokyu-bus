@@ -1,7 +1,7 @@
 ---
 - name: Install nginx
   sudo: yes
-  apt:
+  yum:
     name: nginx
     update_cache: yes
 
