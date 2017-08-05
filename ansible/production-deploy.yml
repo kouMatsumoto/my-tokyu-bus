@@ -13,7 +13,7 @@
         force: yes
 
     - name: Execute npm install
-      command: 'bash -lc "npm install --production"'
+      command: 'bash -lc "source ~/.bashrc" && bash -lc "npm install"'
       args:
         chdir: '{{ app_path }}'
 
