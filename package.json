@@ -8,7 +8,7 @@
     "npm": ">=4.2.0"
   },
   "scripts": {
-    "develop": "tsc -p ./tsconfig.json -w",
+    "develop": "gulp develop",
     "lint": "tslint -p ./tslint.json",
     "server": "NODE_ENV=development node ./src/index.js",
     "build": "tsc -p ./production.tsconfig.json",
@@ -50,8 +50,14 @@
     "@types/moment": "^2.13.0",
     "@types/winston": "^2.3.4",
     "expect": "^1.20.2",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-typescript": "^3.2.1",
     "mkdirp": "^0.5.1",
     "mocha": "^3.5.0",
+    "run-sequence": "^2.1.0",
     "ts-node": "^3.3.0",
     "tslint": "^5.5.0",
     "typescript": "^2.4.2"
