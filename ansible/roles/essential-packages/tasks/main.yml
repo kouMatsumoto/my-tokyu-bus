@@ -1,11 +1,11 @@
 ---
-# tasks to install essential apt packages
+# tasks to install essential yum packages
 #
 # - git: sourcecode version control
 #
 - name: Install essential packages
   sudo: yes
-  apt:
+  yum:
     name: '{{ item }}'
     state: latest
     update_cache: yes
