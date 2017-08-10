@@ -1,6 +1,6 @@
 import * as expect from 'expect';
 import { searchBusstopByWord } from './search-busstops-by-word';
-import { useAsync } from '../../../../spec/helpers/use-async';
+import { useAsync } from '../../../spec/helpers/use-async';
 
 
 describe('searchBusstopByWord', () => {

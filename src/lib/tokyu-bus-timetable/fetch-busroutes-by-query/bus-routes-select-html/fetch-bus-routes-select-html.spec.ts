@@ -1,7 +1,7 @@
 import * as expect from 'expect';
 import * as moment from 'moment';
 import { parseHTMLByAnchor } from '../../parse-html-by-anchor/parse-html-by-anchor';
-import { useAsync } from '../../../../../spec/helpers/use-async';
+import { useAsync } from '../../../../spec/helpers/use-async';
 import { fetchBusStopNameSearchHTML } from '../../search-busstops-by-word/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { fetchBusRoutesSelectHTML } from './fetch-bus-routes-select-html';
 import { busRoutesSelectHTML } from './bus-routes-select-html.mock';

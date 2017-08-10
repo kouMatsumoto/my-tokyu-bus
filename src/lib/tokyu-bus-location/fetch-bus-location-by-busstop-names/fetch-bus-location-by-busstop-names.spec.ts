@@ -1,4 +1,4 @@
-import { useAsync } from '../../../../spec/helpers/use-async';
+import { useAsync } from '../../../spec/helpers/use-async';
 import * as expect from 'expect';
 import { fetchBusLocationByBusstopNames } from './fetch-bus-location-by-busstop-names';
 

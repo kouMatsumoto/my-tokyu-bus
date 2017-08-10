@@ -1,5 +1,5 @@
 import { fetchBusstopIds } from './fetch-busstop-ids';
-import { useAsync } from '../../../../spec/helpers/use-async';
+import { useAsync } from '../../../spec/helpers/use-async';
 import * as expect from 'expect';
 
 
