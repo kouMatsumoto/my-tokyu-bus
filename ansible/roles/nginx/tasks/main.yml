@@ -34,7 +34,9 @@
     owner: nginx
     group: nginx
     mode: 0644
-  tags: nginx
+  tags:
+    - nginx
+    - nginx-template
 
 
 - name: Restart nginx
