@@ -18,17 +18,6 @@
   tags: nginx
 
 
-- name: Change permission of /var/log/nginx/error.log
-  sudo: yes
-  file:
-    state: file
-    path: /var/log/nginx/error.log
-    owner: nginx
-    group: nginx
-    mode: 0644
-  tags: nginx
-
-
 - name: Enable nginx
   sudo: yes
   service:
