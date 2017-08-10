@@ -4,6 +4,7 @@
   yum:
     name: nginx
     update_cache: yes
+  tags: nginx
 
 
 - name: Change permission of /var/log/nginx/
@@ -14,16 +15,7 @@
     owner: nginx
     group: nginx
     mode: 0644
-
-
-- name: Change permission of /var/log/nginx/error.log
-  sudo: yes
-  file:
-    state: file
-    path: /var/log/nginx/error.log
-    owner: nginx
-    group: nginx
-    mode: 0644
+  tags: nginx
 
 
 - name: Enable nginx
@@ -31,6 +23,7 @@
   service:
     name: nginx
     enabled: yes
+  tags: nginx
 
 
 - name: Put nginx.conf file
@@ -41,6 +34,9 @@
     owner: nginx
     group: nginx
     mode: 0644
+  tags:
+    - nginx
+    - nginx-template
 
 
 - name: Restart nginx
@@ -48,3 +44,4 @@
   service:
     name: nginx
     state: restarted
+  tags: nginx

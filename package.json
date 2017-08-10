@@ -1,6 +1,6 @@
 {
   "name": "my-tokyu-bus",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "API server for Actions on Google",
   "main": "index.js",
   "engines": {
@@ -8,11 +8,13 @@
     "npm": ">=4.2.0"
   },
   "scripts": {
-    "develop": "tsc -p ./src/tsconfig.json -w",
-    "lint": "tslint -p ./src/tslint.json",
+    "develop": "gulp develop",
+    "lint": "tslint -p ./tslint.json",
     "server": "NODE_ENV=development node ./src/index.js",
-    "build": "tsc -p ./src/production.tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:prod": "NODE_ENV=production node ./dist/index.js",
+    "build": "gulp build",
+    "test": "mocha --opts ./mocha.opts src/**/*.spec.js",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,23 +28,40 @@
   },
   "homepage": "https://github.com/kouMatsumoto/my-tokyu-bus#readme",
   "dependencies": {
+    "encoding-japanese": "^1.0.25",
+    "jconv": "^0.1.5",
     "jsdom": "^10.1.0",
     "kcors": "^2.2.1",
-    "koa": "^2.2.0",
+    "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
-    "koa-router": "^7.1.1",
+    "koa-router": "^7.2.1",
     "koa-static": "^3.0.0",
+    "moment": "^2.18.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
-    "@types/jsdom": "^2.0.30",
+    "@types/encoding-japanese": "^1.0.15",
+    "@types/expect": "^1.20.1",
+    "@types/jsdom": "^2.0.32",
     "@types/kcors": "^2.2.1",
     "@types/koa": "^2.0.39",
     "@types/koa-bodyparser": "^3.0.23",
     "@types/koa-router": "^7.0.22",
     "@types/koa-static": "^2.0.22",
-    "@types/winston": "^2.3.1",
-    "tslint": "^5.1.0",
-    "typescript": "^2.3.2"
+    "@types/mocha": "^2.2.41",
+    "@types/moment": "^2.13.0",
+    "@types/winston": "^2.3.4",
+    "expect": "^1.20.2",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-typescript": "^3.2.1",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.5.0",
+    "run-sequence": "^2.1.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2"
   }
 }

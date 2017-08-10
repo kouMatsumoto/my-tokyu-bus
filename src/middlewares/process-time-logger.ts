@@ -1,5 +1,5 @@
 import { Middleware } from 'koa';
-import { logger } from '../lib/logger';
+import { devLogger } from '../lib/logger/dev-logger';
 
 
 export const processTimeLogger: Middleware = async (ctx, next) => {
@@ -7,7 +7,7 @@ export const processTimeLogger: Middleware = async (ctx, next) => {
     const start = Date.now();
     await next();
     const ms: number = Date.now() - start;
-    logger.debug(`${ctx.method} ${ctx.url} - ${ms}ms`);
+    devLogger.debug(`${ctx.method} ${ctx.url} - ${ms}ms`);
 
   } else {
     await next();

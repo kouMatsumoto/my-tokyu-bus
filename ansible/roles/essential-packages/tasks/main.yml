@@ -1,5 +1,5 @@
 ---
-# tasks to install essential apt packages
+# tasks to install essential yum packages
 #
 # - git: sourcecode version control
 #
