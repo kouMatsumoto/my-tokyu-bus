@@ -8,10 +8,11 @@
     "npm": ">=4.2.0"
   },
   "scripts": {
+    "start": "npm run server:prod",
     "develop": "gulp develop",
     "lint": "tslint -p ./tslint.json",
     "server": "NODE_ENV=development node ./src/index.js",
-    "server:prod": "NODE_ENV=production node ./dist/index.js",
+    "server:prod": "NODE_ENV=production node ./src/index.js",
     "build": "gulp build",
     "test": "mocha --opts ./mocha.opts src/**/*.spec.js",
     "postinstall": "npm run build"
