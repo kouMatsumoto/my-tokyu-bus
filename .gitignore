@@ -42,8 +42,6 @@ jspm_packages
 # ignore transpile result
 src/**/*.js
 src/**/*.js.map
-spec/**/*.js
-spec/**/*.js.map
 
 # ignore log files
 log/**/*

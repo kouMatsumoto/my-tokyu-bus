@@ -1,6 +1,6 @@
 import * as expect from 'expect';
 import * as moment from 'moment';
-import { useAsync } from '../../../spec/helpers/use-async';
+import { useAsync } from '../../spec/helpers/use-async';
 import { fetchBusStopNameSearchHTML } from './search-busstops-by-word/bus-stop-name-search-html/fetch-bus-stop-name-search-html';
 import { parseHTMLByAnchor } from './parse-html-by-anchor/parse-html-by-anchor';
 import { fetchBusRoutesSelectHTML } from './fetch-busroutes-by-query/bus-routes-select-html/fetch-bus-routes-select-html';

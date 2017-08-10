@@ -11,8 +11,10 @@
     "develop": "gulp develop",
     "lint": "tslint -p ./tslint.json",
     "server": "NODE_ENV=development node ./src/index.js",
-    "build": "tsc -p ./production.tsconfig.json",
-    "test": "mocha --opts ./mocha.opts src/**/*.spec.js"
+    "server:prod": "NODE_ENV=production node ./dist/index.js",
+    "build": "gulp build",
+    "test": "mocha --opts ./mocha.opts src/**/*.spec.js",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
