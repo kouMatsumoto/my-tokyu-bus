@@ -2,7 +2,9 @@
 - name: Install latest Node.js by using nvm
   sudo: no
   command: 'bash -lc "nvm install node"'
+  tags: node.js
 
 - name: Update npm to latest
   sudo: no
   command: 'bash -lc "npm update -g npm"'
+  tags: node.js
