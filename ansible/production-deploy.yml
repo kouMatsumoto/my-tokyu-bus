@@ -18,7 +18,7 @@
         chdir: '{{ app_path }}'
 
     - name: Run build
-      command: 'bash -lc "npm install"'
+      command: 'bash -lc "npm run build"'
       args:
         chdir: '{{ app_path }}'
 
