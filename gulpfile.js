@@ -9,11 +9,14 @@ const runSequence = require('run-sequence');
 const tsTranspileTask = ':ts:transpile';
 const watchTask = ':watch';
 const developTask = 'develop';
+const buildTask = 'build';
 
 
 gulp.task(tsTranspileTask, () => {
+  // ts options
+  const pathToTsconfig = './tsconfig.json';
   const tsOptions = { typescript: require('typescript') };
-  const tsProject = gulpTypescript.createProject('tsconfig.json', tsOptions);
+  const tsProject = gulpTypescript.createProject(pathToTsconfig, tsOptions);
 
   return tsProject.src()
     .pipe(gulpPlumber({
@@ -28,7 +31,7 @@ gulp.task(tsTranspileTask, () => {
     .pipe(tsProject(gulpTypescript.reporter.defaultReporter()))
     .js
     .pipe(gulpSourcemaps.write())
-    .pipe(gulp.dest('.'))
+    .pipe(gulp.dest('src'))
     .pipe(gulpNotify({
       title: 'TypeScript',
       message: 'Finish transpiling',
@@ -47,4 +50,16 @@ gulp.task(developTask, () => {
     tsTranspileTask,
     watchTask
   );
+});
+
+gulp.task(buildTask, () => {
+  // ts options
+  const pathToTsconfig = './production.tsconfig.json';
+  const tsOptions = { typescript: require('typescript') };
+  const tsProject = gulpTypescript.createProject(pathToTsconfig, tsOptions);
+
+  return tsProject.src()
+    .pipe(tsProject())
+    .js
+    .pipe(gulp.dest('src'));
 });
