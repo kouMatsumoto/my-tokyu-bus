@@ -5,6 +5,7 @@
     repo: https://github.com/creationix/nvm.git
     version: v0.33.1
     dest: ~/.nvm
+  tags: nvm
 
 - name: Add nvm setup to .bashrc
   sudo: no
@@ -14,12 +15,13 @@
     line: '{{ item.line }}'
     state: present
     create: yes
-
   with_items:
     - { regexp: '^# nvm setup', line: '# nvm setup' }
     - { regexp: '^export NVM_DIR', line: 'export NVM_DIR="$HOME/.nvm"' }
     - { regexp: '^\[ -s "\$NVM_DIR', line: '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' }
+  tags: nvm
 
 - name: Source .bashrc
   sudo: no
   command: 'bash -lc "source ~/.bashrc"'
+  tags: nvm
