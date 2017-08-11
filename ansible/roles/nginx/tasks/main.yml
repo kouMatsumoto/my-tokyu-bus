@@ -44,4 +44,6 @@
   service:
     name: nginx
     state: restarted
-  tags: nginx
+  tags:
+    - nginx
+    - nginx-template
