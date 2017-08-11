@@ -1,7 +1,7 @@
 import * as Router from 'koa-router';
-import { searchBusstopByWord } from '../../../lib/tokyu-bus-timetable/search-busstops-by-word/search-busstops-by-word';
-import { fetchBusroutesByQuery } from '../../../lib/tokyu-bus-timetable/fetch-busroutes-by-query/fetch-busroutes-by-query';
-import { fetchTimetableByQuery } from '../../../lib/tokyu-bus-timetable/fetch-timetable-by-query/fetch-timetable-by-query';
+import { searchBusstopByWord } from '../../lib/tokyu-bus-timetable/search-busstops-by-word/search-busstops-by-word';
+import { fetchBusroutesByQuery } from '../../lib/tokyu-bus-timetable/fetch-busroutes-by-query/fetch-busroutes-by-query';
+import { fetchTimetableByQuery } from '../../lib/tokyu-bus-timetable/fetch-timetable-by-query/fetch-timetable-by-query';
 
 
 /**
