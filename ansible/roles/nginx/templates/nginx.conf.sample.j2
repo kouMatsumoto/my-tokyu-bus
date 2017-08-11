@@ -14,7 +14,6 @@ http {
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
-
     access_log  /var/log/nginx/access.log  main;
 
     server_tokens       off;
@@ -27,13 +26,14 @@ http {
     include             /etc/nginx/mime.types;
     default_type        application/octet-stream;
 
+
     server {
         listen       80;
         listen       [::]:80 ipv6only=on;
         server_name  my-tokyu-bus.tokyo api.my-tokyu-bus.tokyo;
 
         # For Let's Encrypt Domain Name ownership validation
-        location ~ /\.well-known {
+        location ^~ /.well-known {
             allow all;
             root  /usr/share/nginx/html;
         }
@@ -43,30 +43,45 @@ http {
         }
     }
 
+
+    ssl_certificate /etc/letsencrypt/live/my-tokyu-bus.tokyo/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/my-tokyu-bus.tokyo/privkey.pem;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+    ssl_ecdh_curve secp384r1;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+
+
     server {
         listen       443 ssl;
-        server_name  my-tokyu-bus.tokyo api.my-tokyu-bus.tokyo;
-        root         /usr/share/nginx/html;
+        server_name  my-tokyu-bus.tokyo;
+        root  /usr/share/nginx/html;
 
-        ssl_certificate /etc/letsencrypt/live/my-tokyu-bus.tokyo/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/my-tokyu-bus.tokyo/privkey.pem;
+        # if file doesn't exist, return index.html (For SPA)
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
 
-        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-        ssl_prefer_server_ciphers on;
-        ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-        ssl_ecdh_curve secp384r1;
-        ssl_session_cache shared:SSL:10m;
-        ssl_session_tickets off;
-        ssl_stapling on;
-        ssl_stapling_verify on;
-        resolver 8.8.8.8 8.8.4.4 valid=300s;
-        resolver_timeout 5s;
-        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
-        add_header X-Frame-Options DENY;
-        add_header X-Content-Type-Options nosniff;
+        # for let's encrypt
+        location ^~ /.well-known {
+            allow all;
+        }
+    }
 
-        ssl_dhparam /etc/ssl/certs/dhparam.pem;
-
+    server {
+        listen       443 ssl;
+        server_name  api.my-tokyu-bus.tokyo;
 
         location / {
             proxy_redirect     off;
@@ -83,8 +98,9 @@ http {
         }
 
         # for let's encrypt
-        location ~ /.well-known {
-          allow all;
+        location ^~ /.well-known {
+            root  /usr/share/nginx/html;
+            allow all;
         }
     }
 }
