@@ -20,7 +20,8 @@ app.use(koaBodyparser());
 app.use(processTimeLogger);
 
 /**
- * Main Router
+ * This app is supposed to be run on `.api` subdomain. (api.my-tokyu-bus.tokyo)
+ * So prefix `/api` is not necessary.
  */
 app.use(rootRouter.routes());
 
