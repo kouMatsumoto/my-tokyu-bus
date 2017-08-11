@@ -1,9 +1,7 @@
 import * as Koa from 'koa';
 import * as koaBodyparser from 'koa-bodyparser';
-import * as koaStatic from 'koa-static';
 import * as kcors from 'kcors';
 import { rootRouter } from './routers';
-import { PUBLIC_ROOT } from './config/index';
 import { processTimeLogger } from './middlewares/process-time-logger';
 import { devLogger } from './lib/logger/dev-logger';
 
@@ -13,8 +11,6 @@ const app = new Koa();
  * Update header for Cross-Origin Resource Sharing
  */
 app.use(kcors());
-
-app.use(koaStatic(PUBLIC_ROOT));
 app.use(koaBodyparser());
 
 
@@ -24,7 +20,8 @@ app.use(koaBodyparser());
 app.use(processTimeLogger);
 
 /**
- * Main Router
+ * This app is supposed to be run on `.api` subdomain. (api.my-tokyu-bus.tokyo)
+ * So prefix `/api` is not necessary.
  */
 app.use(rootRouter.routes());
 

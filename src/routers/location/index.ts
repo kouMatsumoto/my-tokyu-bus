@@ -1,5 +1,5 @@
 import * as Router from 'koa-router';
-import { fetchBusLocationByBusstopNames } from '../../../lib/tokyu-bus-location/fetch-bus-location-by-busstop-names/fetch-bus-location-by-busstop-names';
+import { fetchBusLocationByBusstopNames } from '../../lib/tokyu-bus-location/fetch-bus-location-by-busstop-names/fetch-bus-location-by-busstop-names';
 
 
 const _router = new Router();

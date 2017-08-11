@@ -7,6 +7,12 @@ API server for Actions on Google
 This project uses `Ansible` to setup server and deploy application.
 
 
+### How to setup SSL
+
+@see: `https://shawnliu.me/post/using-lets-encrypt-for-nginx-on-centos-7/`
+
+
+
 ### Setup server
 
 1. Enable `ansible`
