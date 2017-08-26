@@ -8,6 +8,11 @@ import { devLogger } from './lib/logger/dev-logger';
 const app = new Koa();
 
 /**
+ * Start to connect DB.
+ */
+import './db/connect';
+
+/**
  * Update header for Cross-Origin Resource Sharing
  */
 app.use(kcors());
