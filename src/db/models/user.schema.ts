@@ -1,5 +1,7 @@
 import { Schema } from 'mongoose';
 import { UserModel } from './user.type';
+import * as randomString from 'randomstring';
+import { ENV } from '../../config/environments';
 
 
 export const userSchema = new Schema({
@@ -15,6 +17,6 @@ export const userSchema = new Schema({
  */
 userSchema.static('generate', async function(this: UserModel) {
   return this.create({
-    key: 'my-key',
+    key: randomString.generate(ENV.randomstringLength),
   });
 });

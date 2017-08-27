@@ -40,6 +40,7 @@
     "koa-static": "^3.0.0",
     "moment": "^2.18.1",
     "mongoose": "^4.11.8",
+    "randomstring": "^1.1.5",
     "winston": "^2.3.1"
   },
   "devDependencies": {
@@ -54,6 +55,7 @@
     "@types/mocha": "^2.2.41",
     "@types/moment": "^2.13.0",
     "@types/mongoose": "^4.7.21",
+    "@types/randomstring": "^1.1.6",
     "@types/winston": "^2.3.4",
     "expect": "^1.20.2",
     "gulp": "^3.9.1",
