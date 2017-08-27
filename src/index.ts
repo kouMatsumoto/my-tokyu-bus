@@ -4,6 +4,7 @@ import * as kcors from 'kcors';
 import { rootRouter } from './routers';
 import { processTimeLogger } from './middlewares/process-time-logger';
 import { devLogger } from './lib/logger/dev-logger';
+import { ENV } from './config/environments';
 
 const app = new Koa();
 
@@ -31,4 +32,4 @@ app.use(processTimeLogger);
 app.use(rootRouter.routes());
 
 
-app.listen(3000, () => devLogger.info('server has started', process.env));
+app.listen(ENV.port, () => devLogger.info(`server has started with port ${ENV.port}`, process.env));

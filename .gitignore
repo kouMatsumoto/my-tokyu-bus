@@ -57,3 +57,6 @@ ansible/vars/**/*
 
 # Ansible's private template files
 ansible/roles/nginx/templates/nginx.conf.j2
+
+# Secret environment variables
+.env
