@@ -11,13 +11,17 @@
 
 import { connect, Mongoose } from 'mongoose';
 import { devLogger } from '../lib/logger/dev-logger';
+import { ENV } from '../config/environments';
 
-// Fixme: move to environment config.
-const dbURI = 'mongodb://localhost/my-tokyu-bus';
 
+const dbURI = ENV.dbUrl;
+
+// Fixme: enable `useMongoClient: true`
+// @see: http://mongoosejs.com/docs/connections.html#use-mongo-client
 const connectOptions = {
-  promiseLibrary: Promise
+  promiseLibrary: Promise,
 };
+
 
 const mongoose: Mongoose = connect(dbURI, connectOptions);
 // use ES6 Promise instead of mongoose Built-in Promise

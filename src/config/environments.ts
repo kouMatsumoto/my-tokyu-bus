@@ -7,9 +7,10 @@ require('dotenv').config();
 
 // env variable declarations.
 const port = process.env.PORT;
-
+const dbUrl = process.env.DB_URL;
 
 
 export const ENV = {
-  port
+  port,
+  dbUrl,
 };
